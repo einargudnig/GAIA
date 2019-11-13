@@ -1,4 +1,4 @@
-package hbv501g.gaia.GAIA;
+package hbv501g.gaia.GAIA.Controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,7 +8,7 @@ public class HomeController {
 
     @RequestMapping("/")
     public String Home() {
-        return "Velkominn";
+        return "Index";
     }
 
     @RequestMapping("login")
