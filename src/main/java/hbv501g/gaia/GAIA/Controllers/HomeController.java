@@ -13,7 +13,7 @@ public class HomeController {
 
     @RequestMapping("login")
     public String LoginPage() {
-        return "LoginPage";
+        return "login";
     }
 
     @RequestMapping("challenges")
