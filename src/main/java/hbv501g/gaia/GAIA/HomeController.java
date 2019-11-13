@@ -16,4 +16,7 @@ public class HomeController {
         return "LoginPage";
     }
 
+    @RequestMapping("challenges")
+    public String ChallengePage() { return "ChallengePage"; }
+
 }
