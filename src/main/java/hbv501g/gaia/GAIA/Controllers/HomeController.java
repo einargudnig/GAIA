@@ -19,4 +19,10 @@ public class HomeController {
     @RequestMapping("challenges")
     public String ChallengePage() { return "ChallengePage"; }
 
+    @RequestMapping("signup")
+    public String SignUp() { return "SignUp"; }
+
+    @RequestMapping("skilmalar")
+    public String Skilmalar() { return "Skilmalar"; }
+
 }
