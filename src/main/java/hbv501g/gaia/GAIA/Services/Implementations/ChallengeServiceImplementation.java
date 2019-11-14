@@ -6,6 +6,7 @@ import hbv501g.gaia.GAIA.Services.ChallengeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigInteger;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,26 +21,27 @@ public class ChallengeServiceImplementation implements ChallengeService {
 
     @Override
     public Challenge save(Challenge challenge) {
-        return null;
+        return repository.save(challenge);
     }
 
     @Override
     public void delete(Challenge challenge) {
-
+        repository.delete(challenge);
     }
 
     @Override
     public List<Challenge> findAll() {
-        return null;
+        return repository.findAll();
     }
 
+
     @Override
-    public Optional<Challenge> findById(long id) {
-        return Optional.empty();
+    public Optional<Challenge> findById(BigInteger id) {
+        return repository.findById(id);
     }
 
     @Override
     public List<Challenge> findByTitle(String title) {
-        return null;
+        return repository.findByTitle(title);
     }
 }

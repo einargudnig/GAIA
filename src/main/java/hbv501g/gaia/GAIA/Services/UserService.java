@@ -9,5 +9,7 @@ public interface UserService {
     void delete(User user);
     List<User> findAll();
     User findByUserName(String userName);
+    User findByEmail(String email);
     User login(User user);
+
 }
