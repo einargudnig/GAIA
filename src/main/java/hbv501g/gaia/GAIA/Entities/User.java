@@ -5,29 +5,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "users", schema = "public")
+@Table(name = "users")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+   // @Column(name="id")
     private long id;
 
-    @Column(name="username")
+   // @Column(name="username")
     public String userName;
 
-    @Column(name="email")
+   // @Column(name="email")
     public String email;
 
-    @Column(name="password")
+   // @Column(name="password")
     public String password;
 
-    @Column(name="userinfo")
+   // @Column(name="userinfo")
     public String userInfo;
 
-    @Column(name="originalindex")
+   // @Column(name="originalindex")
     public Double originalIndex;
 
-    @Column(name="currindex")
+   // @Column(name="currindex")
     public Double currIndex;
 
 
