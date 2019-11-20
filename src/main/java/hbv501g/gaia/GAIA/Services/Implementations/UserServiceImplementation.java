@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 public class UserServiceImplementation implements UserService {
-    UserRepository repository;
+    private UserRepository repository;
 
     @Autowired
     public UserServiceImplementation(UserRepository userRepository) {
@@ -19,26 +19,37 @@ public class UserServiceImplementation implements UserService {
 
     @Override
     public User save(User user) {
-        return null;
+        return repository.save(user);
     }
 
     @Override
     public void delete(User user) {
-
+        repository.delete(user);
     }
 
     @Override
     public List<User> findAll() {
-        return null;
+        return repository.findAll();
     }
 
     @Override
     public User findByUserName(String userName) {
-        return null;
+        return repository.findByUserName(userName);
+    }
+
+    @Override
+    public User findByEmail(String email) {
+        return repository.findByEmail(email);
     }
 
     @Override
     public User login(User user) {
+        User exists = findByEmail(user.email);
+        if (exists != null) {
+            if(exists.password.equals(user.password)) {
+                return user;
+            }
+        }
         return null;
     }
 }

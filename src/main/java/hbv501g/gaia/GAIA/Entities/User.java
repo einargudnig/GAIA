@@ -5,14 +5,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "users")
+@Table(name = "users", schema = "public")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     private long id;
 
+    @Column(name="username")
     public String userName;
+
+    @Column(name="email")
+    public String email;
+
+    @Column(name="password")
     public String password;
+
+    @Column(name="userinfo")
+    public String userInfo;
+
+    @Column(name="originalindex")
+    public Double originalIndex;
+
+    @Column(name="currindex")
+    public Double currIndex;
+
 
 
     @OneToMany(mappedBy = "user")
@@ -26,9 +43,18 @@ public class User {
         this.challenges = challenges;
     }
 
+
     public User() {
     }
 
+    /* USER */
+    public User(String userName, String email, Double originalIndex, Double currIndex, String password) {
+        this.userName = userName;
+        this.email = email;
+        this.originalIndex = originalIndex;
+        this.currIndex = currIndex;
+        this.password = password;
+    }
 
     public long getId() {
         return id;
@@ -43,6 +69,7 @@ public class User {
         return userName;
     }
 
+    /* GETTERS & SETTERS for name */
     public String getUserName() {
         return userName;
     }
@@ -51,6 +78,32 @@ public class User {
         this.userName = userName;
     }
 
+
+    /* GETTERS & SETTERS for email */
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+
+    /* GETTERS & SETTERS for originalIndex */
+    public void setOriginalIndex(Double originalIndex) {
+        this.originalIndex = originalIndex;
+    }
+
+    /* GETTERS & SETTERS for currIndex */
+    public Double getCurrIndex() {
+        return currIndex;
+    }
+
+    public void setCurrIndex(Double currIndex) {
+        this.currIndex = currIndex;
+    }
+
+    /* GETTERS & SETTERS for password */
     public String getPassword() {
         return password;
     }
@@ -59,8 +112,4 @@ public class User {
         this.password = password;
     }
 
-    public User(String userName, String password) {
-        this.userName = userName;
-        this.password = password;
-    }
 }

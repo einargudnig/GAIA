@@ -1,17 +1,28 @@
 package hbv501g.gaia.GAIA.Entities;
 
 import javax.persistence.*;
+import java.math.BigInteger;
 
 @Entity
-@Table(name = "Challenge") //nafn a SQL toflu i database
+@Table(name = "challenges", schema = "public") //nafn a SQL toflu i database
 public class Challenge {
     @Id   //einkvæmt tag, engar tvær challenges með sama ID
     @GeneratedValue(strategy = GenerationType.IDENTITY) //Java haekkar ID sjalfkrafa ef vid buum til nytt
-    private long id;
+    @Column(name = "id",
+            columnDefinition = "NUMERIC(19,0)"
+    )
+    private BigInteger id;
 
+    @Column(name="title")
     private String title;
-    private String description;
+
+    @Column(name="info")
+    public String description;
+
+    @Column(name="count")
     private long count;
+
+    @Column(name="carbonindex")
     private Double carbonIndex;
     // private image picture;
 
@@ -26,11 +37,11 @@ public class Challenge {
     }
 
     /*  GETTERS & SETTERS */
-    public long getId() {
+    public BigInteger getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(BigInteger id) {
         this.id = id;
     }
 

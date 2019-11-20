@@ -4,6 +4,7 @@ import hbv501g.gaia.GAIA.Entities.Challenge;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.math.BigInteger;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,5 +15,5 @@ public interface ChallengeRepository extends JpaRepository<Challenge, Long> {
     void delete(Challenge challenge);
     List<Challenge> findAll();
     List<Challenge> findByTitle(String title);
-    Optional<Challenge> findById(long id);
+    Optional<Challenge> findById(BigInteger id);
 }

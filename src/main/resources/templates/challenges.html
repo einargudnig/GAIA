@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Challenges</title>
+</head>
+<body>
+
+<h2>List of Challenges</h2>
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Carbon Index</th>
+    </tr>
+
+    <tr th:each="challenge : ${challenges}">
+        <td th:text="${challenge.id}">Id</td>
+        <td th:text="${challenge.title}">Title</td>
+        <td th:text="${challenge.info}">Description</td>
+        <td th:text="${challenge.carbonIndex}">Carbon Index</td>
+
+    </tr>
+</table>
+
+
+</body>
+</html>

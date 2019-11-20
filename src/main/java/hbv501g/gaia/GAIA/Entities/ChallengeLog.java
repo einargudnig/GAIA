@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@Table(name = "tengi", schema = "public")
 public class ChallengeLog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

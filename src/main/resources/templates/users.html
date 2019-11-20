@@ -1,11 +1,30 @@
 <!DOCTYPE html>
-<html xmlns:th="https://thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <title>Users!</title>
     <meta charset="UTF-8">
-    <title>Logged In User</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+
 <body>
-<p th:text="${loggedinuser.userName}"></p>
+<h2>List of users</h2>
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Original Index</th>
+    </tr>
+
+    <tr th:each="user : ${users}">
+        <td th:text="${user.id}">Id</td>
+        <td th:text="${user.userName}">Name</td>
+        <td th:text="${user.email}">Email</td>
+        <td th:text="${user.originalIndex}">Original Index</td>
+
+    </tr>
+</table>
 
 </body>
-</html>
+</html>>
