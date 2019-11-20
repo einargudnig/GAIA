@@ -4,10 +4,10 @@ import javax.persistence.*;
 import java.math.BigInteger;
 
 @Entity
-@Table(name = "challenges", schema = "public") //nafn a SQL toflu i database
+@Table(name = "challenges") //nafn a SQL toflu i database
 public class Challenge {
     @Id   //einkvæmt tag, engar tvær challenges með sama ID
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //Java haekkar ID sjalfkrafa ef vid buum til nytt
+    @GeneratedValue(strategy = GenerationType.AUTO) //Java haekkar ID sjalfkrafa ef vid buum til nytt
     @Column(name = "id",
             columnDefinition = "NUMERIC(19,0)"
     )
