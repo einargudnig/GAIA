@@ -43,7 +43,7 @@ public class UserController {
     @RequestMapping(value = "/signup", method = RequestMethod.POST)
     public String signUpPOST(@Valid User user, BindingResult result, Model model){
         if(result.hasErrors()){
-            return "SignUp";
+            return "signup";
         }
         User exists = userService.findByUserName(user.userName);
         if(exists == null){
