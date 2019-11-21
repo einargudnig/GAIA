@@ -4,6 +4,7 @@ import hbv501g.gaia.GAIA.Entities.User;
 import hbv501g.gaia.GAIA.Services.ChallengeService;
 import hbv501g.gaia.GAIA.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.time.LocalDateTime;
 
 @Controller
 public class UserController {
@@ -34,6 +36,7 @@ public class UserController {
     /* SignUp for Users */
     @RequestMapping(value = "/signup", method = RequestMethod.GET)
     public String signUpGET(User user){
+        System.out.println("Her a eg ad saekja user?" + user);
         return "SignUp";
     }
 
@@ -57,7 +60,10 @@ public class UserController {
     } */
 
     /* ******************************************************** */
-    /* To Log in user */
+    /* To Log in user
+    *  First part of this login functionality is just to
+    *  "fetch" the login page
+    */
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginGET(User user){
         return "login";
@@ -65,16 +71,22 @@ public class UserController {
 
     /* ATHATH Þurfum að breyta public breytum í private entities. Fyrir ALLT!
      * Breytum svo hér fyrir neðan..
-     * User exists = userService.findUserByEmail(user.getEmail()) */
+     * User exists = userService.findUserByEmail(user.getEmail())
+     * This part should use the POST method from the login field
+     * and use that data for the login procedure.
+     */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String loginPOST(@Valid User user, BindingResult result, Model model, HttpSession session){
+    public String loginPOST(@Valid User user, BindingResult result, Model model, HttpSession httpSession){
+        System.out.println("BANANI " + user);
         if(result.hasErrors()){
             return "login";
         }
-        model.addAttribute("challenges", userService.findAll());
+        model.addAttribute("user", userService.findAll());
+        System.out.println("EPLI");
         User exists = userService.login(user);
+        System.out.println("Ananas " + exists);
         if(exists != null){
-            session.setAttribute("LoggedInUser", user);
+            httpSession.setAttribute("LoggedInUser", user);
             return "redirect:/";
         }
         return "redirect:/";
@@ -83,11 +95,12 @@ public class UserController {
     /* ******************************************************** */
     /* To see logged in user */
     @RequestMapping(value = "/loggedin", method = RequestMethod.GET)
-    public String loggedinGET(HttpSession session, Model model){
+    public String loggedinGET(HttpSession httpSession, Model model){
         model.addAttribute("challenges", userService.findAll());
-        User sessionUser = (User) session.getAttribute("LoggedInUser");
+        User sessionUser = (User) httpSession.getAttribute("LoggedInUser");
+        System.out.println("Sess " + sessionUser);
         if(sessionUser  != null){
-            model.addAttribute("loggedinuser", sessionUser);
+            model.addAttribute("loggedInUser", sessionUser);
             return "loggedInUser";
         }
         return "redirect:/";
