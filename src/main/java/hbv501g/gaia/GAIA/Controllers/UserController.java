@@ -90,7 +90,7 @@ public class UserController {
             model.addAttribute("loggedinuser", sessionUser);
             return "loggedInUser";
         }
-        return "redirect:/";
+        return "redirect:/users";
     }
 
     /* ***************************************************** */
