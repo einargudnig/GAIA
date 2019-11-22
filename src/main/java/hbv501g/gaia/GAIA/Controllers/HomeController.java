@@ -28,10 +28,8 @@ public class HomeController {
     }
 
 
-    /*
     @RequestMapping("challenges")
     public String ChallengePage() { return "ChallengePage"; }
-    */
 
     @RequestMapping("skilmalar")
     public String Skilmalar() { return "Skilmalar"; }

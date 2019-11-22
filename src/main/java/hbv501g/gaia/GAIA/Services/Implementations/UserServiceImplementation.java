@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceImplementation implements UserService {
@@ -17,35 +18,80 @@ public class UserServiceImplementation implements UserService {
         this.repository = userRepository;
     }
 
+    /*
+    * Function that saves user
+    * to database
+    */
     @Override
     public User save(User user) {
         return repository.save(user);
     }
 
+    /*
+    * Function that finds
+    * user from ID
+    */
+    @Override
+    public Optional<User> findById(Long id) {
+        return repository.findById(id);
+    }
+
+    /*
+    * Function that updates user.
+    * username must be uniqe!
+    */
+    @Override
+    public User updateUser(User user) {
+        User exists = findByUserName(user.userName);
+        System.out.println("HERNA " + exists);
+        if (exists != null) {
+            return null;
+        }
+        return updateUser(user);
+    }
+
+    /*
+    * function that deletes user from database
+    */
     @Override
     public void delete(User user) {
         repository.delete(user);
     }
 
+    /*
+    * Function that finds all users
+    * returns list
+    */
     @Override
     public List<User> findAll() {
         return repository.findAll();
     }
 
+    /*
+    * Function that finds user by his
+    * username
+    */
     @Override
     public User findByUserName(String userName) {
         return repository.findByUserName(userName);
     }
 
+    /*
+     * Function that finds user by his
+     * email
+     */
     @Override
     public User findByEmail(String email) {
         return repository.findByEmail(email);
     }
 
+    /*
+     * Function that log in user by his
+     */
     @Override
     public User login(User user) {
         User exists = findByUserName(user.userName);
-        System.out.println("LARPERA " + exists);
+
         if (exists != null) {
             if(exists.password.equals(user.password)) {
                 return user;

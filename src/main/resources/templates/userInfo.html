@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Búa til aðgang</title>
+    <title>Upplýsingar um notanda</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -23,12 +23,13 @@
                     <a class="nav-link js-scroll-trigger" href="/challenges">Skoða Áskoranir</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="/signup">Búa til aðgang</a>
+                    <a class="nav-link js-scroll-trigger" href="/login">Skrá mig inn</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
+
 
 <header class="bg-primary text-white">
     <div class="container text-center">
@@ -37,26 +38,27 @@
     </div>
 </header>
 
+<div class="container">
+    <label th:for="userName"><b>Notendanafn</b></label>
+    <span type="text" placeholder="Nafn" name="userName" th:text="${user.userName}"></span><br>
 
-<form  action="#" th:action="@{/signup}" th:object="${user}"  method="Post" type="hidden" style="border:1px solid #ccc">
+    <label th:for="email"><b>Netfang</b></label>
+    <span type="text" placeholder="Netfang" name="email" th:text="${user.email}"></span>
+</div>
+
+<form  action="#" th:action="@{/userInfo}" th:object="${user}"  method="Post" type="hidden" style="border:1px solid #ccc">
     <div class="container">
-        <h1 class="no_effect">Búa til aðgang</h1>
+        <h1 class="no_effect">Upplýsingar um notanda</h1>
         <p>Vinsamlegast fyllið inn formið.</p>
         <hr>
 
-        <label th:for="userName"><b>Notendanafn</b></label>
-        <input type="text" placeholder="Nafn" name="userName" th:field="${user.userName}" required>
+        <label th:for="userInfo"><b>Upplýsingar</b></label>
+        <input type="text" placeholder="Upplýsingar" name="userInfo" th:field="${user.userInfo}">
 
-        <label th:for="email"><b>Netfang</b></label>
-        <input type="text" placeholder="Netfang" name="email" th:field="${user.email}" required>
 
-        <label th:for="psw"><b>Lykilorð</b></label>
-        <input type="password" placeholder="Lykilorð" name="psw" th:field="${user.password}" required>
-
-        <p>Með því að gera aðgang samþykkir þú  <a href="/skilmalar" style="color:dodgerblue">Notendaskilmála okkar</a>.</p>
 
         <div class="clearfix">
-            <button type="submit" class="signupbtn">Búa til aðgang</button>
+            <button type="submit" class="signupbtn">Skrá upplýsingar</button>
         </div>
     </div>
 </form>
