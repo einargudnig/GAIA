@@ -52,25 +52,6 @@ public class UserController {
         return "/userInfo";
     }
 
-    /* ******************************************************** */
-    /* To fill in userInfo */
-    @RequestMapping(value = "/userInfo", method = RequestMethod.GET)
-    public String userInfoGET(User user){
-        return "userinfo";
-    }
-
-    @RequestMapping(value = "/userInfo", method = RequestMethod.POST)
-    public String userInfoPOST(@Valid User user, BindingResult result, Model model) {
-        if (result.hasErrors()) {
-            return "userInfo";
-        }
-        userService.updateUser(user);
-        System.out.println("Eru villur? " + user);
-        model.addAttribute("challenges", challengeService.findAll());
-        return "/challenges";
-
-    }
-
 
 
     /* ******************************************************** */
@@ -110,7 +91,7 @@ public class UserController {
     /* To see logged in user */
     @RequestMapping(value = "/loggedin", method = RequestMethod.GET)
     public String loggedinGET(HttpSession httpSession, Model model){
-        model.addAttribute("challenges", userService.findAll());
+        model.addAttribute("user", userService.findAll());
         User sessionUser = (User) httpSession.getAttribute("LoggedInUser");
         System.out.println("Sess " + sessionUser);
         if(sessionUser  != null){

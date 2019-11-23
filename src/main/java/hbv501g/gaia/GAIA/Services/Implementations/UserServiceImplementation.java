@@ -43,11 +43,11 @@ public class UserServiceImplementation implements UserService {
     @Override
     public User updateUser(User user) {
         User exists = findByUserName(user.userName);
-        System.out.println("HERNA " + exists);
+
         if (exists != null) {
-            return null;
+            return updateUser(user);
         }
-        return updateUser(user);
+        return null;
     }
 
     /*
@@ -91,6 +91,13 @@ public class UserServiceImplementation implements UserService {
     @Override
     public User login(User user) {
         User exists = findByUserName(user.userName);
+
+        System.out.println("HERNA er update" + exists);
+        System.out.println(exists.userName);
+        System.out.println(exists.email);
+        System.out.println(exists.password);
+        System.out.println(exists.originalIndex);
+        System.out.println(exists.userInfo);
 
         if (exists != null) {
             if(exists.password.equals(user.password)) {

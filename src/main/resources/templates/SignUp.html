@@ -53,6 +53,18 @@
         <label th:for="psw"><b>Lykilorð</b></label>
         <input type="password" placeholder="Lykilorð" name="psw" th:field="${user.password}" required>
 
+        <hr>
+
+        <label th:for="userInfo_drive"><b>Hversu oft keyriru í vinnuna?</b></label>
+        <select th:field="*{percentage}">
+            <option th:each="i : ${#numbers.sequence(0, 5)}" th:value="${i}" th:text="${i}">
+            </option>
+        </select>
+
+
+
+
+
         <p>Með því að gera aðgang samþykkir þú  <a href="/skilmalar" style="color:dodgerblue">Notendaskilmála okkar</a>.</p>
 
         <div class="clearfix">
