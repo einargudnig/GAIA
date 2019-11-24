@@ -15,7 +15,7 @@ CREATE TABLE users(id serial PRIMARY KEY,
 
 CREATE TABLE challenges(id serial PRIMARY KEY,
                         title varchar(64) NOT NULL,
-                        info varchar(64) NOT NULL,
+                        info varchar(1024) NOT NULL,
                         count integer NOT NULL,
                         carbonIndex float8
                         );

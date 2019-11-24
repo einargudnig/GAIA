@@ -13,14 +13,17 @@
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link th:href="@{index.css}" href="../static/index.css" rel="stylesheet" type="text/css" media="screen" />
+    <link th:href="@{challenges.css}" href="../static/challenges.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body id="page-top">
 
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
     <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">GAIA</a>
+        <a class="navbar-brand js-scroll-trigger" href="/">GAIA</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -53,40 +56,46 @@
     </div>
 </header>
 
-<h2>List of Challenges</h2>
-
-<!--<table>
-    <tr>
-        <th>Id</th>
-        <th>Title</th>
-        <th>Description</th>
-        <th>Carbon Index</th>
-    </tr>
-
-    <tr th:each="challenge : ${challenges}">
-        <td th:text="${challenge.id}">Id</td>
-        <td th:text="${challenge.title}">Title</td>
-        <td th:text="${challenge.description}">Description</td>
-        <td th:text="${challenge.carbonIndex}">Carbon Index</td>
-
-    </tr>
-</table> !-->
-
-<section id="contact">
+<section id="team" class="pb-5">
+    <h5 class="section-title h1">CHALLENGES</h5>
     <div class="container">
-        <div th:each="challenge : ${challenges}">
-        <div class="card" style="width: 18rem;">
-            <img src="https://thumbs.dreamstime.com/t/go-green-grass-inscription-computer-monitor-concept-ecoenvironment-friendly-computer-eco-environment-vector-illustration-75614936.jpg" class="card-img-top">
-            <div class="card-body">
-                <h5 class="card-title" th:text="${challenge.title}"></h5>
-                <p class="card-text" th:text="${challenge.description}"></p>
-                <a href="#" class="btn btn-primary">Þoriru?</a>
+        <div class="row">
+            <div th:each="challenge : ${challenges}">
+            <!-- For each challenge -->
+            <div class="col-ml-3">
+                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                    <div class="mainflip">
+                        <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <p><img class=" img-fluid" src="https://sunlimetech.com/portfolio/boot4menu/assets/imgs/team/img_01.png" alt="card image"></p>
+                                    <h4 class="card-title" th:text="${challenge.title}"></h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="backside">
+                            <div class="card">
+                                <div class="card-body text-center mt-4">
+                                    <h4 class="card-title" th:text="${challenge.title}"></h4>
+                                    <p class="accept">Taka við áskorun</p>
+                                    <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+                                    <p class="card-text" th:text="${challenge.description}"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+           </div>
         </div>
     </div>
 </section>
 
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; GAIA 2019</p>
+    </div>
+</footer>
 
 </body>
 </html>
