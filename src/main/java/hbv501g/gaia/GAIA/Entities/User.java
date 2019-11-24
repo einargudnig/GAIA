@@ -48,12 +48,13 @@ public class User {
     }
 
     /* USER */
-    public User(String userName, String email, Double originalIndex, Double currIndex, String password) {
+    public User(String userName, String email, String password, String userInfo, Double originalIndex, Double currIndex) {
         this.userName = userName;
         this.email = email;
+        this.password = password;
+        this.userInfo = userInfo;
         this.originalIndex = originalIndex;
         this.currIndex = currIndex;
-        this.password = password;
     }
 
     public long getId() {
@@ -88,6 +89,25 @@ public class User {
         this.email = email;
     }
 
+    /* GETTERS & SETTERS for password */
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+
+    /* GETTERS & SETTERS for userInfo */
+    public String getUserInfo() {
+        return userInfo;
+    }
+
+    public void setUserInfo(String userInfo) {
+        this.password = userInfo;
+    }
+
 
     /* GETTERS & SETTERS for originalIndex */
     public void setOriginalIndex(Double originalIndex) {
@@ -103,13 +123,5 @@ public class User {
         this.currIndex = currIndex;
     }
 
-    /* GETTERS & SETTERS for password */
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
 }

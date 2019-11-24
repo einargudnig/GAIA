@@ -8,9 +8,9 @@ CREATE TABLE users(id serial PRIMARY KEY,
                    username varchar(64) NOT NULL,
                    email varchar(64) NOT NULL,
                    password varchar(64) NOT NULL,
-                   userinfo text[],
-                   originalindex float8 NOT NULL,
-                   currindex float8 NOT NULL
+                   userinfo varchar(100),
+                   originalindex float8,
+                   currindex float8
                    );
 
 CREATE TABLE challenges(id serial PRIMARY KEY,

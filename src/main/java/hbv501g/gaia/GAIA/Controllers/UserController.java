@@ -19,45 +19,40 @@ import java.time.LocalDateTime;
 public class UserController {
 
     private UserService userService;
-    // private ChallengeService challengeService;
+    private ChallengeService challengeService;
 
     @Autowired
     public UserController(UserService userService, ChallengeService challengeService) {
         this.userService = userService;
-        // this.challengeService = challengeService;
+        this.challengeService = challengeService;
     }
 
-    /*
-    @RequestMapping("signup")
-    public String SignUp(User user) { return "SignUp"; }
-     */
 
     /* ******************************************************** */
     /* SignUp for Users */
     @RequestMapping(value = "/signup", method = RequestMethod.GET)
     public String signUpGET(User user){
-        System.out.println("Her a eg ad saekja user?" + user);
         return "SignUp";
     }
 
     @RequestMapping(value = "/signup", method = RequestMethod.POST)
     public String signUpPOST(@Valid User user, BindingResult result, Model model){
+        System.out.println("HERNA " + user);
         if(result.hasErrors()){
-            return "signup";
+            return "SignUp";
         }
         User exists = userService.findByUserName(user.userName);
+        // System.out.println("HALLO " + exists);
         if(exists == null){
+            // System.out.println("KEMST EG HINGAD??");
             userService.save(user);
+            System.out.println("Hvad er her " + user);
         }
         model.addAttribute("users", userService.findAll());
-        return "/users";
+        return "/userInfo";
     }
 
-    /* Login
-    @RequestMapping("login")
-    public String LoginPage() {
-        return "login";
-    } */
+
 
     /* ******************************************************** */
     /* To Log in user
@@ -77,14 +72,14 @@ public class UserController {
      */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String loginPOST(@Valid User user, BindingResult result, Model model, HttpSession httpSession){
-        System.out.println("BANANI " + user);
+        // System.out.println("BANANI " + user);
         if(result.hasErrors()){
             return "login";
         }
         model.addAttribute("user", userService.findAll());
-        System.out.println("EPLI");
+        // System.out.println("EPLI");
         User exists = userService.login(user);
-        System.out.println("Ananas " + exists);
+        // System.out.println("Ananas " + exists);
         if(exists != null){
             httpSession.setAttribute("LoggedInUser", user);
             return "redirect:/";
@@ -96,14 +91,14 @@ public class UserController {
     /* To see logged in user */
     @RequestMapping(value = "/loggedin", method = RequestMethod.GET)
     public String loggedinGET(HttpSession httpSession, Model model){
-        model.addAttribute("challenges", userService.findAll());
+        model.addAttribute("user", userService.findAll());
         User sessionUser = (User) httpSession.getAttribute("LoggedInUser");
         System.out.println("Sess " + sessionUser);
         if(sessionUser  != null){
             model.addAttribute("loggedInUser", sessionUser);
             return "loggedInUser";
         }
-        return "redirect:/users";
+        return "redirect:/";
     }
 
     /* ***************************************************** */

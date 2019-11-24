@@ -38,25 +38,33 @@
 </header>
 
 
-<form  action="#" th:action="@{/SignUp}" th:object="${user}"  method="Post" type="hidden" style="border:1px solid #ccc">
+<form  action="#" th:action="@{/signup}" th:object="${user}"  method="Post" type="hidden" style="border:1px solid #ccc">
     <div class="container">
         <h1 class="no_effect">Búa til aðgang</h1>
         <p>Vinsamlegast fyllið inn formið.</p>
         <hr>
 
-        <label for="userName"><b>Notendanafn</b></label>
-        <input type="text" placeholder="Jon" name="userName" th:field="${user.userName}" required>
+        <label th:for="userName"><b>Notendanafn</b></label>
+        <input type="text" placeholder="Nafn" name="userName" th:field="${user.userName}" required>
 
-        <label for="psw"><b>Lykilorð</b></label>
+        <label th:for="email"><b>Netfang</b></label>
+        <input type="text" placeholder="Netfang" name="email" th:field="${user.email}" required>
+
+        <label th:for="psw"><b>Lykilorð</b></label>
         <input type="password" placeholder="Lykilorð" name="psw" th:field="${user.password}" required>
 
-        <label for="index"><b>carbonIndex</b></label>
-        <input type="text" placeholder="carbonIndex" name="psw" th:field="${user.carbonIndex}" required>
+        <hr>
 
-        <!--
-        <label for="psw-repeat"><b>Endurtekið lykilorð</b></label>
-        <input type="password" placeholder="Endurtekið lykilorð" name="psw-repeat" required>
-        -->
+        <label th:for="userInfo_drive"><b>Hversu oft keyriru í vinnuna?</b></label>
+        <select th:field="*{percentage}">
+            <option th:each="i : ${#numbers.sequence(0, 5)}" th:value="${i}" th:text="${i}">
+            </option>
+        </select>
+
+
+
+
+
         <p>Með því að gera aðgang samþykkir þú  <a href="/skilmalar" style="color:dodgerblue">Notendaskilmála okkar</a>.</p>
 
         <div class="clearfix">
