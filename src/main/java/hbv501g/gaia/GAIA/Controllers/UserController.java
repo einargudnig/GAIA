@@ -110,5 +110,7 @@ public class UserController {
         return "users";
     }
 
-
+    /**
+     * BARA AD TESTA FYRIR GIT?!?!?!?!?!?!?!?!?!??!
+     */
 }
