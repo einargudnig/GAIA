@@ -23,26 +23,17 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
     <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="/">GAIA</a>
+        <a class="navbar-brand js-scroll-trigger" href="/#page-top">GAIA</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#about">Um Gaia</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#services">Markmið</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#contact">Hafa Samband</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="/challenges">Skoða Áskoranir</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="/signup">Búa til aðgang</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="/login">Innskrá</a>
                 </li>
             </ul>
         </div>
@@ -57,7 +48,7 @@
 </header>
 
 <section id="team" class="pb-5">
-    <h5 class="section-title h1">CHALLENGES</h5>
+    <h5 class="section-title h1">Áskoranir</h5>
     <div class="container">
         <div class="row">
             <div th:each="challenge : ${challenges}">
@@ -68,7 +59,7 @@
                         <div class="frontside">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <p><img class=" img-fluid" src="https://sunlimetech.com/portfolio/boot4menu/assets/imgs/team/img_01.png" alt="card image"></p>
+                                    <p><img class=" img-fluid" src="https://images.glaciermedia.ca/polopoly_fs/1.2271675.1465244454!/fileImage/httpImage/image.jpg_gen/derivatives/landscape_804/tree-seedling.jpg" alt="card image"></p>
                                     <h4 class="card-title" th:text="${challenge.title}"></h4>
                                 </div>
                             </div>
@@ -78,7 +69,7 @@
                                 <div class="card-body text-center mt-4">
                                     <h4 class="card-title" th:text="${challenge.title}"></h4>
                                     <p class="accept">Taka við áskorun</p>
-                                    <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+                                    <a th:href="@{/addChallenge/{id}(id=${challenge.id})}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
                                     <p class="card-text" th:text="${challenge.description}"></p>
                                 </div>
                             </div>

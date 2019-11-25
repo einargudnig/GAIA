@@ -1,5 +1,6 @@
 package hbv501g.gaia.GAIA.Services.Implementations;
 
+import hbv501g.gaia.GAIA.Entities.Challenge;
 import hbv501g.gaia.GAIA.Entities.User;
 import hbv501g.gaia.GAIA.Repositories.UserRepository;
 import hbv501g.gaia.GAIA.Services.UserService;
@@ -104,6 +105,11 @@ public class UserServiceImplementation implements UserService {
                 return user;
             }
         }
+        return null;
+    }
+
+    @Override
+    public User addChallengeToUser(User user, Challenge challenge) {
         return null;
     }
 }
