@@ -27,7 +27,6 @@ public class UserServiceImplementation implements UserService {
     public User save(User user) {
         System.out.println(user);
         System.out.println(user.email);
-        System.out.println(user.gender);
         return repository.save(user);
     }
 
@@ -101,6 +100,7 @@ public class UserServiceImplementation implements UserService {
 
     @Override
     public User addChallengeToUser(User user, Challenge challenge) {
-        return null;
+        User exists = findByUserName(user.userName);
+        return repository.save(exists);
     }
 }

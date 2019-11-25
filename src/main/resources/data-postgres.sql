@@ -1,11 +1,11 @@
 INSERT INTO users VALUES (1, 'Viktor', 'viktor@viktor.is',
-'rotkiv', NULL, 500, 300, 'F');
+'rotkiv', NULL, 500, 300);
 INSERT INTO users VALUES (2, 'Páll', 'pall@pall.is',
-'llap', NULL, 200, 100, 'M');
+'llap', NULL, 200, 100);
 INSERT INTO users VALUES (3, 'Ómar', 'omar@omar.is',
-'ramo', NULL, 50, 600, 'F');
+'ramo', NULL, 50, 600);
 INSERT INTO users VALUES (4, 'Einar', 'einar@einar.is',
-'ranie', NULL, 10, 3000, 'M');
+'ranie', NULL, 10, 3000);
 
 INSERT INTO challenges VALUES (1, 'Hjóla í vinnuna',
                                'Slepptu bílnum! Hjólreiðar til og frá vinnu og skóla er frábær leið til að ná daglegum skammti af hreyfing sem Embætti landlæknis mælir með eða um 30 mínútur á dag fyrir fullorðna og 60 mínútur á dag fyrir börn.

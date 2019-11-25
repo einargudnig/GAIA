@@ -30,11 +30,8 @@ public class User {
     @Column(name="currindex")
     public Double currIndex;
 
-    /* Test for signUp */
-    @Column(name="gender")
-    public String gender;
-    /* ***** */
-
+    @Column(name="currChallenge")
+    public int[] currChallenge;
 
     @OneToMany(mappedBy = "user")
     private List<ChallengeLog> challenges = new ArrayList<>();
@@ -52,14 +49,14 @@ public class User {
     }
 
     /* USER */
-    public User(String userName, String email, String password, String userInfo, Double originalIndex, Double currIndex, String gender) {
+    public User(String userName, String email, String password, String userInfo, Double originalIndex, Double currIndex, int[] currChallenge) {
         this.userName = userName;
         this.email = email;
         this.password = password;
         this.userInfo = userInfo;
         this.originalIndex = originalIndex;
         this.currIndex = currIndex;
-        this.gender = gender;
+        this.currChallenge = currChallenge;
     }
 
     public long getId() {
@@ -128,15 +125,17 @@ public class User {
         this.currIndex = currIndex;
     }
 
+    /* GETTERS & SETTERS for currChallenge */
+    public int[] getCurrChallenge() {
+        return currChallenge;
+    }
+
+    public void setCurrIndex(int[] currChallenge) {
+        this.currChallenge = currChallenge;
+    }
+
     /*
     * Test for signUp
      */
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
 
 }

@@ -114,7 +114,6 @@ public class UserController {
 
     @RequestMapping(value = "/addChallenge/{id}", method = RequestMethod.GET)
     public String addChallengeToUser(@PathVariable("id") BigInteger id, User user, Model model, HttpSession httpSession){
-        System.out.println("Hér byrjar fallið");
         Challenge challenge = challengeService.findById(id).orElseThrow(()-> new IllegalArgumentException("Invalid challenge ID"));
         User sessionUser = (User) httpSession.getAttribute("LoggedInUser");
         userService.addChallengeToUser(sessionUser, challenge);
