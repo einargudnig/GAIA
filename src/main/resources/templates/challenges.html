@@ -78,7 +78,7 @@
                                 <div class="card-body text-center mt-4">
                                     <h4 class="card-title" th:text="${challenge.title}"></h4>
                                     <p class="accept">Taka við áskorun</p>
-                                    <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+                                    <a th:href="@{/addChallenge/{id}(id=${challenge.id})}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
                                     <p class="card-text" th:text="${challenge.description}"></p>
                                 </div>
                             </div>
