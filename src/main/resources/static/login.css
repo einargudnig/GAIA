@@ -12,6 +12,7 @@ html, body {
 body{
     display:flex;
     flex-direction:column;
+    position: center;
 }
 
 header {
@@ -33,13 +34,10 @@ h1 {
 }
 
 form, h2 {
-    padding-left: 50px;
+    padding-left: 75px;
     padding-top: 25px;
 }
 
-form {
-    
-}
 
 .lead {
     text-shadow:
