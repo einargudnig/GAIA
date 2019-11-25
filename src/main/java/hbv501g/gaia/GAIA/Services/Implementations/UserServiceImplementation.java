@@ -24,6 +24,9 @@ public class UserServiceImplementation implements UserService {
     */
     @Override
     public User save(User user) {
+        System.out.println(user);
+        System.out.println(user.email);
+        System.out.println(user.gender);
         return repository.save(user);
     }
 
@@ -36,19 +39,7 @@ public class UserServiceImplementation implements UserService {
         return repository.findById(id);
     }
 
-    /*
-    * Function that updates user.
-    * username must be uniqe!
-    */
-    @Override
-    public User updateUser(User user) {
-        User exists = findByUserName(user.userName);
 
-        if (exists != null) {
-            return updateUser(user);
-        }
-        return null;
-    }
 
     /*
     * function that deletes user from database

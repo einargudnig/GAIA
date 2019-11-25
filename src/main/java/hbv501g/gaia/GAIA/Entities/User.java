@@ -30,6 +30,10 @@ public class User {
     @Column(name="currindex")
     public Double currIndex;
 
+    /* Test for signUp */
+    @Column(name="gender")
+    public String gender;
+    /* ***** */
 
 
     @OneToMany(mappedBy = "user")
@@ -48,13 +52,14 @@ public class User {
     }
 
     /* USER */
-    public User(String userName, String email, String password, String userInfo, Double originalIndex, Double currIndex) {
+    public User(String userName, String email, String password, String userInfo, Double originalIndex, Double currIndex, String gender) {
         this.userName = userName;
         this.email = email;
         this.password = password;
         this.userInfo = userInfo;
         this.originalIndex = originalIndex;
         this.currIndex = currIndex;
+        this.gender = gender;
     }
 
     public long getId() {
@@ -123,5 +128,15 @@ public class User {
         this.currIndex = currIndex;
     }
 
+    /*
+    * Test for signUp
+     */
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 
 }
