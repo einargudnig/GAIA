@@ -55,12 +55,19 @@
 
         <hr>
 
-        <label th:for="userInfo_drive"><b>Hversu oft keyriru í vinnuna?</b></label>
-        <select th:field="*{percentage}">
-            <option th:each="i : ${#numbers.sequence(0, 5)}" th:value="${i}" th:text="${i}">
-            </option>
-        </select>
-
+        <label th:for="user.gender"><b>Hversu oft keyriru í vinnuna?</b></label><br>
+        <table>
+            <tr>
+                <td>
+                    <h2>Hverus oft keyriru í vinnu/skóla?</h2>
+                </td>
+                <td>
+                    <select name="kyn">
+                        <option th:each="user : ${users}" th:value="'M'" th:text="Kyn"></option>
+                    </select>
+                </td>
+            </tr>
+        </table>
 
 
 

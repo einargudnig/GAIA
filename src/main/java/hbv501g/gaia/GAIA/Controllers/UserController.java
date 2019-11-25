@@ -52,9 +52,8 @@ public class UserController {
             System.out.println("Hvad er her " + user);
         }
         model.addAttribute("users", userService.findAll());
-        return "/userInfo";
+        return "/users";
     }
-
 
 
     /* ******************************************************** */
@@ -113,7 +112,6 @@ public class UserController {
         return "users";
     }
 
-
     @RequestMapping(value = "/addChallenge/{id}", method = RequestMethod.GET)
     public String addChallengeToUser(@PathVariable("id") BigInteger id, User user, Model model, HttpSession httpSession){
         System.out.println("Hér byrjar fallið");
@@ -128,5 +126,5 @@ public class UserController {
         model.addAttribute("users", userService.addChallengeToUser(sessionUser, challenge));
         return "redirect:/challenges";
     }
-    
+
 }
