@@ -146,7 +146,7 @@ section .section-title {
 
 .frontside .card,
 .backside .card {
-    min-height: 312px;
+    min-height: 350px;
 }
 
 .backside .card a {
@@ -154,12 +154,14 @@ section .section-title {
     color: #007b5e !important;
 }
 
+
 .backside .card .card-text {
     align-content: center;
     padding-top: 15px;
     overflow: hidden;
-    white-space: nowrap;
+    white-space: normal;
     text-overflow: ellipsis;
+    contain: content;
 }
 
 .frontside .card .card-title,
