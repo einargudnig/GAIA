@@ -1,15 +1,75 @@
 <!DOCTYPE html>
 <html xmlns:th="https://thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
     <title>Login</title>
+
+    <!-- Bootstrap core CSS-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link th:href="@{login.css}" href="../static/login.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
 </head>
-<body>
-<h2>Login to your account</h2>
-<form action="#" th:action="@{/login}"  th:object="${user}" method="post">
-    <input type="text" name="username" id="username" th:field="${user.userName}"/>
-    <input type="text" name="password" id="password" th:field="${user.password}"/>
-    <input type="submit" value="Login"/>
-</form>
+<body id="page-top">
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="/">GAIA</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="/#about">Um Gaia</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="/#services">Markmið</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="/#contact">Hafa Samband</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="/challenges">Skoða Áskoranir</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="/signup">Búa til aðgang</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<header class="bg-primary text-white">
+    <div class="container text-center">
+        <h1>GAIA</h1>
+        <p class="lead">Staðurinn þar sem þú getur leyst öll vandamál heimsins!</p>
+    </div>
+</header>
+
+
+    <h2>Innskráning</h2>
+        <form action="#" th:action="@{/login}"  th:object="${user}" method="post">
+            <input type="text" placeholder="Notendanafn" name="username" id="username" th:field="${user.userName}"/>
+            <input type="text" placeholder="Lykilorð" name="password" id="password" th:field="${user.password}"/>
+            <input type="submit" value="Skrá inn"/>
+        </form>
 </body>
+
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; GAIA 2019</p>
+    </div>
+    <!-- /.container -->
+</footer>
+
 </html>

@@ -1,0 +1,56 @@
+/*!
+ * Start Bootstrap - Scrolling Nav (https://startbootstrap.com/template-overviews/scrolling-nav)
+ * Copyright 2013-2019 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-scrolling-nav/blob/master/LICENSE)
+ */
+
+html, body {
+    height: 100%; !important;
+    margin: 0;
+}
+
+body{
+    display:flex;
+    flex-direction:column;
+}
+
+header {
+    padding: 156px 0 100px;
+}
+
+header {
+    background-image: url("https://images.pexels.com/photos/459225/pexels-photo-459225.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+h1 {
+    text-shadow:
+            -1px -1px 0 #000,
+            1px -1px 0 #000,
+            -1px 1px 0 #000,
+            1px 1px 0 #000;
+}
+
+form, h2 {
+    padding-left: 50px;
+    padding-top: 25px;
+}
+
+form {
+    
+}
+
+.lead {
+    text-shadow:
+            -1px -1px 0 #000,
+            1px -1px 0 #000,
+            -1px 1px 0 #000,
+            1px 1px 0 #000;
+}
+
+footer{
+    height: 60px;
+    margin-top:auto;
+}
+
