@@ -15,7 +15,6 @@
 
     <!-- Custom styles for this template -->
     <link th:href="@{login.css}" href="../static/login.css" rel="stylesheet" type="text/css" media="screen" />
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
 </head>
 <body id="page-top">
@@ -47,13 +46,14 @@
     </div>
 </header>
 
-
+<section>
     <h2>Innskráning</h2>
         <form action="#" th:action="@{/login}"  th:object="${user}" method="post">
             <input type="text" placeholder="Notendanafn" name="username" id="username" th:field="${user.userName}"/>
             <input type="text" placeholder="Lykilorð" name="password" id="password" th:field="${user.password}"/>
             <input type="submit" value="Skrá inn"/>
         </form>
+</section>
 </body>
 
 <footer class="py-5 bg-dark">
