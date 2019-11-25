@@ -1,7 +1,6 @@
 package hbv501g.gaia.GAIA.Entities;
 
 import javax.persistence.*;
-import java.math.BigInteger;
 
 @Entity
 @Table(name = "challenges") //nafn a SQL toflu i database
@@ -11,7 +10,7 @@ public class Challenge {
     @Column(name = "id",
             columnDefinition = "NUMERIC(19,0)"
     )
-    private BigInteger id;
+    private long id;
 
     @Column(name="title")
     private String title;
@@ -37,11 +36,13 @@ public class Challenge {
     }
 
     /*  GETTERS & SETTERS */
-    public BigInteger getId() {
+    public Challenge getChallenge(Challenge challenge) { return challenge; }
+
+    public long getId() {
         return id;
     }
 
-    public void setId(BigInteger id) {
+    public void setId(long id) {
         this.id = id;
     }
 

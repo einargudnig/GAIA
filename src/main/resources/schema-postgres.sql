@@ -11,7 +11,7 @@ CREATE TABLE users(id serial PRIMARY KEY,
                    userinfo varchar(100),
                    originalindex float8,
                    currindex float8,
-                   currChallenge int[]
+                   currChallenge integer DEFAULT 0
                    );
 
 CREATE TABLE challenges(id serial PRIMARY KEY,

@@ -36,7 +36,7 @@ public class ChallengeServiceImplementation implements ChallengeService {
 
 
     @Override
-    public Optional<Challenge> findById(BigInteger id) {
+    public Optional<Challenge> findById(long id) {
         return repository.findById(id);
     }
 
@@ -44,4 +44,6 @@ public class ChallengeServiceImplementation implements ChallengeService {
     public List<Challenge> findByTitle(String title) {
         return repository.findByTitle(title);
     }
+
+
 }

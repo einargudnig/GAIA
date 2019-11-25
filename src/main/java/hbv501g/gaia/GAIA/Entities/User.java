@@ -31,7 +31,7 @@ public class User {
     public Double currIndex;
 
     @Column(name="currChallenge")
-    public int[] currChallenge;
+    public int currChallenge;
 
     @OneToMany(mappedBy = "user")
     private List<ChallengeLog> challenges = new ArrayList<>();
@@ -49,7 +49,7 @@ public class User {
     }
 
     /* USER */
-    public User(String userName, String email, String password, String userInfo, Double originalIndex, Double currIndex, int[] currChallenge) {
+    public User(String userName, String email, String password, String userInfo, Double originalIndex, Double currIndex, int currChallenge) {
         this.userName = userName;
         this.email = email;
         this.password = password;
@@ -126,11 +126,11 @@ public class User {
     }
 
     /* GETTERS & SETTERS for currChallenge */
-    public int[] getCurrChallenge() {
+    public int getCurrChallenge() {
         return currChallenge;
     }
 
-    public void setCurrIndex(int[] currChallenge) {
+    public void setCurrChallenge(int currChallenge) {
         this.currChallenge = currChallenge;
     }
 

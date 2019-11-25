@@ -1,5 +1,6 @@
 package hbv501g.gaia.GAIA.Repositories;
 
+import hbv501g.gaia.GAIA.Entities.Challenge;
 import hbv501g.gaia.GAIA.Entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -13,6 +14,4 @@ public interface UserRepository extends JpaRepository<User, Long> {
     List<User> findAll();
     User findByUserName(String userName);
     User findByEmail(String email);
-
-
 }
