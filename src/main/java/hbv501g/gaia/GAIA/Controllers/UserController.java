@@ -112,8 +112,8 @@ public class UserController {
         return "users";
     }
 
-    @RequestMapping(value = "/addChallenge/{id}", method = {RequestMethod.GET, RequestMethod.POST})
-    public String addChallengeToUser(@PathVariable("id") long id, User user, Model model, HttpSession httpSession){
+   /* @RequestMapping(value = "/addChallenge/{id}", method = {RequestMethod.GET, RequestMethod.POST})
+    public String addChallengeToUser(@PathVariable("id") long id, Model model, HttpSession httpSession){
         Challenge challenge = challengeService.findById(id).orElseThrow(()-> new IllegalArgumentException("Invalid challenge ID"));
         User sessionUser = (User) httpSession.getAttribute("LoggedInUser");
         System.out.println("--------");
@@ -124,5 +124,5 @@ public class UserController {
         model.addAttribute("users", userService.addChallengeToUser(sessionUser, challenge));
         return "redirect:/challenges";
     }
-
+        */
 }

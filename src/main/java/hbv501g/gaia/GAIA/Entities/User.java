@@ -33,16 +33,16 @@ public class User {
     @Column(name="currChallenge")
     public int currChallenge;
 
-    @OneToMany(mappedBy = "user")
-    private List<ChallengeLog> challenges = new ArrayList<>();
+    //@OneToMany(mappedBy = "user")
+    //private List<ChallengeLog> challenges = new ArrayList<>();
 
-    public List<ChallengeLog> getChallenges() {
+    /*public List<ChallengeLog> getChallenges() {
         return challenges;
-    }
+    }*/
 
-    public void setChallenges(List<ChallengeLog> challenges) {
+    /*public void setChallenges(List<ChallengeLog> challenges) {
         this.challenges = challenges;
-    }
+    }*/
 
 
     public User() {

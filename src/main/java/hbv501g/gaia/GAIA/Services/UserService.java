@@ -14,5 +14,5 @@ public interface UserService {
     User findByUserName(String userName);
     User findByEmail(String email);
     User login(User user);
-    User addChallengeToUser(User user, Challenge challenge);
+   // User addChallengeToUser(User user, Challenge challenge);
 }

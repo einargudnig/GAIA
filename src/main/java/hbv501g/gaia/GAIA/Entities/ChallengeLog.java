@@ -4,69 +4,40 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "tengi", schema = "public")
+@Table(name = "tengi")
 public class ChallengeLog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     private long id;
 
-    @ManyToOne
-    private Challenge challenge;
+    @Column(name="challengeid")
+    private long challengeid;
 
-    @ManyToOne
-    private User user;
-
-    public Date fromdate;
-    public Date todate;
+    @Column(name="userid")
+    private long userid;
 
     public ChallengeLog() {
     }
 
-    public Date getFromdate() {
-        return fromdate;
+    public ChallengeLog(long challengeid, long userid) {
+        this.challengeid = challengeid;
+        this.userid = userid;
     }
 
-    public void setFromdate(Date fromdate) {
-        this.fromdate = fromdate;
+    public long getId() { return id; }
+
+    public void setId(long id) { this.id = id; }
+
+    public long getUserId() {
+        return userid;
     }
 
-    public Date getToDate() {
-        return todate;
+    public void setUserId(long id) {
+        this.userid = userid;
     }
 
-    public void setToDate(Date todate) {
-        this.todate = todate;
-    }
+    public long getChallengeId() { return challengeid; }
 
-
-    public ChallengeLog(Challenge Challenge, User user, Date fromdate, Date todate) {
-        this.challenge = challenge;
-        this.user = user;
-        this.fromdate = fromdate;
-        this.todate = todate;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public Challenge getChallenge() {
-        return challenge;
-    }
-
-    public void setChallenge(Challenge challenge) {
-        this.challenge = challenge;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
+    public void setChallengeId(long id) { this.challengeid = challengeid; }
 }
