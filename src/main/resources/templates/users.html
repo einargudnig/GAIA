@@ -53,12 +53,12 @@
 
 <div class="secondBody">
 <h2>Search for user</h2>
-
+<!--
     <form action="#" th:action="@{/users}" th:object="${users}" method="post">
-        <input type="text" th:field="*{userName}">
-        <!-- <p th:if="${#fields.hasErrors('${userName}')}" th:errors="*{userName}">Error?</p> -->
+        <input type="text" th:field="${user.useName}">
+        <p th:if="${#fields.hasErrors('${userName}')}" th:errors="*{userName}">Error?</p>
         <input type="submit" value="Search">
-    </form>
+    </form>-->
 
 <table class="displayTable">
     <tr id="topTable">
@@ -67,6 +67,7 @@
        <!-- <th>Email</th> -->
         <th>Original Index</th>
         <th>User Info</th>
+        <th>trans Index</th>
     </tr>
 
     <tr id="dbTable" th:each="user : ${users}">
@@ -75,6 +76,7 @@
         <!-- <td th:text="${user.email}">Email</td> Ekki sýna email users í search? -->
         <td th:text="${user.originalIndex}">Original Index</td>
         <td th:text="${user.userInfo}">Info</td>
+        <td th:text="${user.transIndex}">trans Index</td>
     </tr>
 </table>
 </div>
