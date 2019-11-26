@@ -40,6 +40,7 @@
     </div>
 </nav>
 
+<!-- HEADER -->
 <header class="bg-primary text-white">
     <div class="container text-center">
         <h1>GAIA</h1>
@@ -47,8 +48,11 @@
     </div>
 </header>
 
+<!-- Challenges Header -->
 <section id="team" class="pb-5">
     <h5 class="section-title h1">Áskoranir</h5>
+
+    <!-- Iteration through all challenges -->
     <div class="container">
         <div class="row">
             <div th:each="challenge : ${challenges}">
@@ -72,7 +76,7 @@
                                         <div th:case="*">
                                             <p class="accept">Taka við áskorun</p>
                                             <form action="#" th:action="@{/addChallengeToUser}"  th:object="${user}" method="post">
-                                            <a th:href="@{/addChallenge/{id}(id=${challenge.id})}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+                                            <a th:href="@{/addChallenge/{id}(id=${challenge.id})}" class="btn btn-light btn-sm"><i class="fa fa-plus"></i></a>
                                             </form>
                                             <p class="card-text" th:text="${challenge.description}"></p>
                                         </div>

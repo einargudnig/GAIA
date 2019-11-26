@@ -11,7 +11,10 @@ CREATE TABLE users(id serial PRIMARY KEY,
                    userinfo varchar(100),
                    originalindex float8,
                    currindex float8,
-                   transIndex integer DEFAULT 0
+                   transIndex integer DEFAULT 0,
+                   foodIndex integer DEFAULT 0,
+                   houseIndex integer DEFAULT 0,
+                   consIndex integer DEFAULT 0
                    );
 
 CREATE TABLE challenges(id serial PRIMARY KEY,

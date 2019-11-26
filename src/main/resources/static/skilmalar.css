@@ -1,3 +1,13 @@
+html, body {
+    height: 100%; !important;
+    margin: 0;
+}
+
+body{
+    display:flex;
+    flex-direction:column;
+}
+
 header {
     padding: 156px 0 100px;
 }
@@ -28,4 +38,16 @@ h1 {
     -1px 1px 0 #000,
     1px 1px 0 #000;
 }
+
+h2, ol {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 16px;
+}
+
+footer{
+    height: 60px;
+    margin-top:auto;
+}
+
 
