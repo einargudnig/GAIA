@@ -30,21 +30,21 @@ public class User {
     @Column(name="currindex")
     public Double currIndex;
 
-    @Column(name="currChallenge")
-    public int currChallenge;
+    @Column(name="transIndex")
+    public int transIndex;
 
     public User() {
     }
 
     /* USER */
-    public User(String userName, String email, String password, String userInfo, Double originalIndex, Double currIndex, int currChallenge) {
+    public User(String userName, String email, String password, String userInfo, Double originalIndex, Double currIndex, int transIndex) {
         this.userName = userName;
         this.email = email;
         this.password = password;
         this.userInfo = userInfo;
         this.originalIndex = originalIndex;
         this.currIndex = currIndex;
-        this.currChallenge = currChallenge;
+        this.transIndex = transIndex;
     }
 
     public long getId() {
@@ -113,14 +113,10 @@ public class User {
         this.currIndex = currIndex;
     }
 
-    /* GETTERS & SETTERS for currChallenge */
-    public int getCurrChallenge() {
-        return currChallenge;
-    }
+    /* GETTERS & SETTERS for transIndex */
+    public int getTransIndex() { return transIndex; }
 
-    public void setCurrChallenge(int currChallenge) {
-        this.currChallenge = currChallenge;
-    }
+    public void setTransIndex(int transIndex) { this.transIndex = transIndex; }
 
     /*
     * Test for signUp
