@@ -54,6 +54,10 @@
         <input type="password" placeholder="Lykilorð" name="psw" th:field="${user.password}" required>
 
         <hr>
+
+        <div class="turndownforwhat">
+
+        <label class="labelit">Hvaða samgöngur notar þú?</label>
         <select th:field="${user.transIndex}">
             <option th:value="0" >Labba</option>
             <option th:value="5" >Hjóla</option>
@@ -63,7 +67,8 @@
             <option th:value="2500" >HMS Queen Mary</option>
         </select>
 
-        <select th:field="${user.foodIndex}">
+            <label class="labelit">Hvað eftirtöldu lýsir þínu mataræði best?</label>
+            <select th:field="${user.foodIndex}">
             <option th:value="0" >Vegan</option>
             <option th:value="5" >Pescitarian</option>
             <option th:value="8" >Grænmetisæta</option>
@@ -72,17 +77,24 @@
             <option th:value="2500" >Carnivore</option>
         </select>
 
+            <label class="labelit">Hvernig hitar þú hús þitt?</label>
         <select th:field="${user.houseIndex}">
             <option th:value="0" >Hitaveita</option>
             <option th:value="5" >Rafmagn</option>
         </select>
 
+            <label class="labelit">Hversu mikið eyðir þú í ..?</label>
         <select th:field="${user.consIndex}">
-            <option th:value="0" >undir 100.000 á mánuði</option>
-            <option th:value="5" >yfir miljón</option>
+            <option th:value="5" >undir 100.000 á mánuði</option>
+            <option th:value="10">100-250 þús</option>
+            <option th:value="20">250-500 þús</option>
+            <option th:value="30">500-750 þús</option>
+            <option th:value="40">750 þús - 1 milljón</option>
+            <option th:value="50" >yfir miljón</option>
         </select>
 
-        <p>Með því að gera aðgang samþykkir þú  <a href="/skilmalar" style="color:dodgerblue">Notendaskilmála okkar</a>.</p>
+        </div>
+        <p class="skilmali">Með því að gera aðgang samþykkir þú  <a href="/skilmalar" style="color:dodgerblue">Notendaskilmála okkar</a>.</p>
 
         <div class="clearfix">
             <button type="submit" class="signupbtn">Búa til aðgang</button>
