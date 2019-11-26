@@ -54,11 +54,14 @@
         <input type="password" placeholder="Lykilorð" name="psw" th:field="${user.password}" required>
 
         <hr>
-
-
-
-
-
+        <select th:field="${user.transIndex}">
+            <option th:value="0" >Labba</option>
+            <option th:value="5" >Hjóla</option>
+            <option th:value="8" >Strætó</option>
+            <option th:value="12" >Lítill bíll</option>
+            <option th:value="15" >Stór bíll</option>
+            <option th:value="2500" >HMS Queen Mary</option>
+        </select>
 
         <p>Með því að gera aðgang samþykkir þú  <a href="/skilmalar" style="color:dodgerblue">Notendaskilmála okkar</a>.</p>
 

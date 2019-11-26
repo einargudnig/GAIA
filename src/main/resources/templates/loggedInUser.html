@@ -2,12 +2,16 @@
 <html xmlns:th="https://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Búa til aðgang</title>
+    <title>GAIA</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <link th:href="@{signup.css}" href="../static/signup.css" rel="stylesheet" type="text/css" media="screen" />
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
 
@@ -38,7 +42,66 @@
 </header>
 
 
-<p th:text="${loggedInUser}"></p>
+<div class="container">
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">  <h4 >User Profile</h4></div>
+            <div class="panel-body">
+                <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+
+                    <img  class="img-circle img-responsive" alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profile-image1">
+
+                </div>
+
+            </div>
+            <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8" >
+                <div class="container" >
+                    <h2 th:text="${user.userName}"></h2>
+
+
+
+                </div>
+                <hr>
+                <div class="container details" >
+                    <i class="fa fa-user"></i><span th:text="${user.email}"></span><br>
+                    <i class="fa fa-plus"></i><span th:text="${user.userInfo}"></span><br>
+                    <i class="fa fa-user"></i><h6 th:text="${user.originalIndex}"></h6><br>
+                    <i class="fa fa-user"></i><h5 th:text="${user.currIndex}"></h5><br>
+
+
+                </div>
+                <hr>
+                <div class="col-sm-5 col-xs-6 tital ">
+                    <span>Áskorarnir mínar!</span>
+
+                    <!--
+                    <tr th:each="challenge : ${challenges}">
+
+                        <td th:text="${challenge.title}">Name</td>
+
+                    </tr>
+                    -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
 
 
 
