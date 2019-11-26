@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <title>Users</title>
+    <title>Error</title>
 
     <!-- Bootstrap core CSS-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -15,7 +12,6 @@
     <link th:href="@{users.css}" href="../static/users.css" rel="stylesheet" type="text/css" media="screen" />
 
 </head>
-
 <body>
 
 <!-- Navigation -->
@@ -50,33 +46,11 @@
         <p class="lead">Staðurinn þar sem þú getur leyst öll vandamál heimsins!</p>
     </div>
 </header>
-
 <div class="secondBody">
-<h2>Search for user</h2>
+    <h1>óó nei!</h1>
+    <h1>Hvernig lentir þú hér?</h1>
 
-    <form action="#" th:action="@{/users}" th:object="${users}" method="post">
-        <input type="text" th:field="*{userName}">
-        <!-- <p th:if="${#fields.hasErrors('${userName}')}" th:errors="*{userName}">Error?</p> -->
-        <input type="submit" value="Search">
-    </form>
-
-<table class="displayTable">
-    <tr id="topTable">
-       <!-- <th>Id</th> -->
-        <th>Name</th>
-       <!-- <th>Email</th> -->
-        <th>Original Index</th>
-        <th>User Info</th>
-    </tr>
-
-    <tr id="dbTable" th:each="user : ${users}">
-        <!-- <td th:text="${user.id}">Id</td> Ekki sýna id users í search? -->
-        <td th:text="${user.userName}">Name</td>
-        <!-- <td th:text="${user.email}">Email</td> Ekki sýna email users í search? -->
-        <td th:text="${user.originalIndex}">Original Index</td>
-        <td th:text="${user.userInfo}">Info</td>
-    </tr>
-</table>
 </div>
+
 </body>
 </html>
