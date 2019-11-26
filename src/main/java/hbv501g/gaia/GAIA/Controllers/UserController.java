@@ -118,9 +118,11 @@ public class UserController {
     }
 
     @RequestMapping(value = "/users", method = RequestMethod.POST)
-    public String userSubmit(@Valid @ModelAttribute("users") User users, Model model, String userName) {
+    public String userSubmit(@Valid @ModelAttribute("users") User users, BindingResult result, Model model, String userName) {
         System.out.println("hallo eg er inni userSubmit!");
-
+        if(result.hasErrors()){
+            return "redirect:/error";
+        }
         model.addAttribute("users", userService.findByUserName(userName));
         return "users";
 
