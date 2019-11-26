@@ -2,6 +2,7 @@ package hbv501g.gaia.GAIA.Controllers;
 
 import hbv501g.gaia.GAIA.Entities.Challenge;
 import hbv501g.gaia.GAIA.Entities.User;
+import hbv501g.gaia.GAIA.Services.ChallengeLogService;
 import hbv501g.gaia.GAIA.Services.ChallengeService;
 import hbv501g.gaia.GAIA.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,11 +22,13 @@ public class UserController {
 
     private UserService userService;
     private ChallengeService challengeService;
+    private ChallengeLogService challengeLogService;
 
     @Autowired
-    public UserController(UserService userService, ChallengeService challengeService) {
+    public UserController(UserService userService, ChallengeService challengeService, ChallengeLogService challengeLogService) {
         this.userService = userService;
         this.challengeService = challengeService;
+        this.challengeLogService = challengeLogService;
     }
 
 
@@ -96,6 +99,10 @@ public class UserController {
         System.out.println("Sess " + sessionUser);
         if(sessionUser  != null){
             model.addAttribute("loggedInUser", sessionUser);
+            User myUser = userService.findByUserName(sessionUser.userName);
+            model.addAttribute("user", myUser);
+            // Challenge challenge = challengeService.findById()
+            model.addAttribute("challenges", challengeLogService.findAll());
             return "loggedInUser";
         }
         return "redirect:/";
