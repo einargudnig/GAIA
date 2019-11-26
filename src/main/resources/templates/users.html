@@ -16,7 +16,6 @@
         <th>Email</th>
         <th>User Info</th>
         <th>Original Index</th>
-        <th>Gender</th>
     </tr>
 
     <tr th:each="user : ${users}">
@@ -25,7 +24,6 @@
         <td th:text="${user.email}">Email</td>
         <td th:text="${user.userInfo}">Info</td>
         <td th:text="${user.originalIndex}">Original Index</td>
-        <td th:text="${user.gender}">Gender</td>
 
     </tr>
 </table>
