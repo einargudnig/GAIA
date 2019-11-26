@@ -45,7 +45,7 @@
 <div class="container">
     <div class="row">
         <div class="panel panel-default">
-            <div class="panel-heading">  <h4 >User Profile</h4></div>
+            <div class="panel-heading">  <h4 >Notandasíða</h4></div>
             <div class="panel-body">
                 <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
 
@@ -56,31 +56,71 @@
             </div>
             <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8" >
                 <div class="container" >
+
                     <h2 th:text="${user.userName}"></h2>
-
-
 
                 </div>
                 <hr>
                 <div class="container details" >
-                    <i class="fa fa-user"></i><span th:text="${user.email}"></span><br>
-                    <i class="fa fa-plus"></i><span th:text="${user.userInfo}"></span><br>
-                    <i class="fa fa-user"></i><h6 th:text="${user.originalIndex}"></h6><br>
-                    <i class="fa fa-user"></i><h5 th:text="${user.currIndex}"></h5><br>
+                    <div class="row>">
+
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <div class="card" style="width: 18rem;">
+                                <div class="card-body">
+                                     <h6 class="card-title" th:text="${user.email}"></h6>
+                                    <h5 class="card-subtitle mb-2 text-muted">Tölvupóstur notanda</h5>
+                                    <i class="fa fa-instagram" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <div class="card" style="width: 18rem;">
+                                <div class="card-body">
+                                    <h6 class="card-title">Upplýsingar</h6>
+                                    <h5 class="card-subtitle mb-2 text-muted">Upplýsingar um notanda</h5>
+                                    <p th:text="${user.userInfo}"></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <div class="card" style="width: 18rem;">
+                                <div class="card-body">
+                                    <h6 class="card-title" th:text="${user.originalIndex}"></h6>
+                                    <h5 class="card-subtitle mb-2 text-muted">Uppranlegt carbon fótspor</h5>
+                                    <p>Þessi tala er fundin þegar notandi skráir sig á síðuna í fyrsta sinn.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="card" style="width: 18rem;">
+                                <div class="card-body">
+                                    <h6 class="card-title" th:text="${user.currIndex}"></h6>
+                                    <h5 class="card-subtitle mb-2 text-muted">Núverandi carbon fótspor</h5>
+                                    <p>Þessi tala er fundin þegar notandi tekur að sér að framkvæma hinar ýmsu áskoranir.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
 
 
                 </div>
                 <hr>
                 <div class="col-sm-5 col-xs-6 tital ">
                     <span>Áskorarnir mínar!</span>
+                    <div class="container">
 
-                    <!--
-                    <tr th:each="challenge : ${challenges}">
+                        <tr th:each="challenge : ${challenges}">
 
-                        <td th:text="${challenge.title}">Name</td>
+                            <td th:text="${challenge.id}">Challenge Id</td>
 
-                    </tr>
-                    -->
+                        </tr>
+                    </div>
+
 
                 </div>
             </div>
