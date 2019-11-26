@@ -82,7 +82,7 @@ public class UserController {
         // System.out.println("Ananas " + exists);
         if(exists != null){
             httpSession.setAttribute("LoggedInUser", user);
-            return "redirect:/";
+            return "redirect:/loggedin";
         }
         return "redirect:/";
     }
@@ -121,7 +121,7 @@ public class UserController {
     @RequestMapping(value = "/users", method = RequestMethod.POST)
     public String userSubmit(@Valid @ModelAttribute("users") User users, Model model, String userName) {
         System.out.println("hallo eg er inni userSubmit!");
-        
+
         model.addAttribute("users", userService.findByUserName(userName));
         return "users";
 
