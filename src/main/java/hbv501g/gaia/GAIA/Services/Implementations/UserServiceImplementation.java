@@ -98,14 +98,4 @@ public class UserServiceImplementation implements UserService {
         return null;
     }
 
-    /* @Override
-    public User addChallengeToUser(User user, Challenge challenge) {
-        User exists = findByUserName(user.userName);
-        //Challenge askorun = challenge.getChallenge(challenge);
-        long askorun = challenge.getId();
-        //int[] a = new int[1];
-        //a[0] = (int) askorun;
-        exists.setCurrChallenge((int) askorun);
-        return repository.save(exists);
-    } */
 }

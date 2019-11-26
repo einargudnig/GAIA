@@ -41,7 +41,6 @@ public class ChallengeLogController {
         System.out.println("--------");
         System.out.println("Hér er user og challenge title sem er verið að skrá");
         System.out.println(sessionUser);
-        System.out.println(sessionUser.getId());
         System.out.println(challenge.getTitle());
         System.out.println("--------");
         long challengeId = challenge.getId();

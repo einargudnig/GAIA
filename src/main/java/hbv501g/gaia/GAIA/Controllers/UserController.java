@@ -112,17 +112,4 @@ public class UserController {
         return "users";
     }
 
-   /* @RequestMapping(value = "/addChallenge/{id}", method = {RequestMethod.GET, RequestMethod.POST})
-    public String addChallengeToUser(@PathVariable("id") long id, Model model, HttpSession httpSession){
-        Challenge challenge = challengeService.findById(id).orElseThrow(()-> new IllegalArgumentException("Invalid challenge ID"));
-        User sessionUser = (User) httpSession.getAttribute("LoggedInUser");
-        System.out.println("--------");
-        System.out.println("Hér er user og challenge title sem er verið að skrá");
-        System.out.println(sessionUser);
-        System.out.println(challenge.getTitle());
-        System.out.println("--------");
-        model.addAttribute("users", userService.addChallengeToUser(sessionUser, challenge));
-        return "redirect:/challenges";
-    }
-        */
 }
