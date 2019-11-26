@@ -9,9 +9,7 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -84,7 +82,7 @@ public class UserController {
         // System.out.println("Ananas " + exists);
         if(exists != null){
             httpSession.setAttribute("LoggedInUser", user);
-            return "redirect:/";
+            return "redirect:/loggedin";
         }
         return "redirect:/";
     }
@@ -106,10 +104,27 @@ public class UserController {
     /* ***************************************************** */
     /* To see what users are in the database */
     /* Virkar ad skoda /users */
+    /* //  Taka sma út til að testa search
     @RequestMapping(value = "/users", method = RequestMethod.GET)
     public String usersGET(Model model) {
         model.addAttribute("users", userService.findAll());
         return "users";
+    }
+    */
+
+    @RequestMapping(value = "/users", method = RequestMethod.GET)
+    public String userGET(Model model) {
+        model.addAttribute("users", new User());
+        return "users";
+    }
+
+    @RequestMapping(value = "/users", method = RequestMethod.POST)
+    public String userSubmit(@Valid @ModelAttribute("users") User users, Model model, String userName) {
+        System.out.println("hallo eg er inni userSubmit!");
+
+        model.addAttribute("users", userService.findByUserName(userName));
+        return "users";
+
     }
 
 }
