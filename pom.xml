@@ -60,12 +60,20 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-
+		
 		<!-- Prufa með validator -->
 		<dependency>
 			<groupId>org.hibernate.validator</groupId>
 			<artifactId>hibernate-validator</artifactId>
 		</dependency>
+
+		<!-- Test fyrir Icons -->
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>font-awesome</artifactId>
+			<version>4.7.0</version>
+		</dependency>
+
 	</dependencies>
 
 
