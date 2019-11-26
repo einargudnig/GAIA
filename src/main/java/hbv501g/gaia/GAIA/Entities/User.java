@@ -33,11 +33,21 @@ public class User {
     @Column(name="transIndex")
     public int transIndex;
 
+    @Column(name="foodIndex")
+    public int foodIndex;
+
+    @Column(name="houseIndex")
+    public int houseIndex;
+
+    @Column(name="consIndex")
+    public int consIndex;
+
     public User() {
     }
 
     /* USER */
-    public User(String userName, String email, String password, String userInfo, Double originalIndex, Double currIndex, int transIndex) {
+    public User(String userName, String email, String password, String userInfo, Double originalIndex, Double currIndex,
+                int transIndex, int foodIndex, int houseIndex, int consIndex) {
         this.userName = userName;
         this.email = email;
         this.password = password;
@@ -45,6 +55,9 @@ public class User {
         this.originalIndex = originalIndex;
         this.currIndex = currIndex;
         this.transIndex = transIndex;
+        this.foodIndex = foodIndex;
+        this.houseIndex = houseIndex;
+        this.consIndex = consIndex;
     }
 
     public long getId() {
@@ -117,6 +130,21 @@ public class User {
     public int getTransIndex() { return transIndex; }
 
     public void setTransIndex(int transIndex) { this.transIndex = transIndex; }
+
+    /* GETTERS & SETTERS for foodIndex */
+    public int getFoodIndex() { return foodIndex; }
+
+    public void setFoodIndex(int foodIndex) { this.foodIndex = foodIndex; }
+
+    /* GETTERS & SETTERS for houseIndex */
+    public int getHouseIndex() { return houseIndex; }
+
+    public void setHouseIndex(int houseIndex) { this.houseIndex = houseIndex; }
+
+    /* GETTERS & SETTERS for consIndex */
+    public int getConsIndex() { return consIndex; }
+
+    public void setConsIndex(int consIndex) { this.consIndex = consIndex; }
 
     /*
     * Test for signUp
