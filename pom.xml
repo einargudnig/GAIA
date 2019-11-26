@@ -60,7 +60,7 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-
+		
 		<!-- Prufa með validator -->
 		<dependency>
 			<groupId>org.hibernate.validator</groupId>

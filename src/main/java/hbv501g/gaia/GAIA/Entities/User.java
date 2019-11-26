@@ -1,6 +1,9 @@
 package hbv501g.gaia.GAIA.Entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,12 +16,15 @@ public class User {
     private long id;
 
     @Column(name="username")
+    @NotNull
     public String userName;
 
     @Column(name="email")
+    @Email
     public String email;
 
     @Column(name="password")
+    @Size(min=4, max=20)
     public String password;
 
     @Column(name="userinfo")
