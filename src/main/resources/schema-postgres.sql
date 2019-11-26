@@ -10,7 +10,8 @@ CREATE TABLE users(id serial PRIMARY KEY,
                    password varchar(64) NOT NULL,
                    userinfo varchar(100),
                    originalindex float8,
-                   currindex float8
+                   currindex float8,
+                   currChallenge integer DEFAULT 0
                    );
 
 CREATE TABLE challenges(id serial PRIMARY KEY,

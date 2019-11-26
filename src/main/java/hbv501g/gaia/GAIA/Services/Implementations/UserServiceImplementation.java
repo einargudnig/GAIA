@@ -1,5 +1,6 @@
 package hbv501g.gaia.GAIA.Services.Implementations;
 
+import hbv501g.gaia.GAIA.Entities.Challenge;
 import hbv501g.gaia.GAIA.Entities.User;
 import hbv501g.gaia.GAIA.Repositories.UserRepository;
 import hbv501g.gaia.GAIA.Services.UserService;
@@ -24,6 +25,8 @@ public class UserServiceImplementation implements UserService {
     */
     @Override
     public User save(User user) {
+        System.out.println(user);
+        System.out.println(user.email);
         return repository.save(user);
     }
 
@@ -36,19 +39,7 @@ public class UserServiceImplementation implements UserService {
         return repository.findById(id);
     }
 
-    /*
-    * Function that updates user.
-    * username must be uniqe!
-    */
-    @Override
-    public User updateUser(User user) {
-        User exists = findByUserName(user.userName);
 
-        if (exists != null) {
-            return updateUser(user);
-        }
-        return null;
-    }
 
     /*
     * function that deletes user from database
@@ -106,4 +97,5 @@ public class UserServiceImplementation implements UserService {
         }
         return null;
     }
+
 }

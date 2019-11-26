@@ -1,5 +1,6 @@
 package hbv501g.gaia.GAIA.Controllers;
 
+import hbv501g.gaia.GAIA.Entities.Challenge;
 import hbv501g.gaia.GAIA.Entities.User;
 import hbv501g.gaia.GAIA.Services.ChallengeService;
 import hbv501g.gaia.GAIA.Services.UserService;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.math.BigInteger;
 import java.time.LocalDateTime;
 
 @Controller
@@ -48,9 +50,8 @@ public class UserController {
             System.out.println("Hvad er her " + user);
         }
         model.addAttribute("users", userService.findAll());
-        return "/userInfo";
+        return "/users";
     }
-
 
 
     /* ******************************************************** */
@@ -120,9 +121,10 @@ public class UserController {
     @RequestMapping(value = "/users", method = RequestMethod.POST)
     public String userSubmit(@Valid @ModelAttribute("users") User users, Model model, String userName) {
         System.out.println("hallo eg er inni userSubmit!");
-
+        
         model.addAttribute("users", userService.findByUserName(userName));
         return "users";
 
     }
+
 }

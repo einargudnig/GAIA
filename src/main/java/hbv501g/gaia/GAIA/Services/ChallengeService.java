@@ -10,6 +10,6 @@ public interface ChallengeService {
     Challenge save(Challenge challenge);
     void delete(Challenge challenge);
     List<Challenge> findAll();
-    Optional<Challenge> findById(BigInteger id);
+    Optional<Challenge> findById(long id);
     List<Challenge> findByTitle(String title);
 }
