@@ -68,7 +68,7 @@
                             <div class="card">
                                 <div class="card-body text-center mt-4">
                                     <h4 class="card-title" th:text="${challenge.title}"></h4>
-                                    <div th:switch="${loggedInUser}">
+                                    <div th:switch="${user.userName}">
                                         <div th:case="*">
                                             <p class="accept">Taka við áskorun</p>
                                             <form action="#" th:action="@{/addChallengeToUser}"  th:object="${user}" method="post">
