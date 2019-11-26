@@ -39,7 +39,7 @@ public class ChallengeLog {
     }
 
 
-    public ChallengeLog(Challenge Challenge, User user, Date fromdate, Date todate) {
+    public ChallengeLog(Challenge challenge, User user, Date fromdate, Date todate) {
         this.challenge = challenge;
         this.user = user;
         this.fromdate = fromdate;
