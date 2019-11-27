@@ -11,7 +11,7 @@ INSERT INTO challenges VALUES (1, 'Hjóla í vinnuna',
                                'Slepptu bílnum! Hjólreiðar til og frá vinnu og skóla er frábær leið til að ná daglegum skammti af hreyfing sem Embætti landlæknis mælir með eða um 30 mínútur á dag fyrir fullorðna og 60 mínútur á dag fyrir börn.
                                 Hjólreiðar spyrna við hreyfingarleysi og offitu.
                                 ', 0, 20);
-INSERT INTO challenges VALUES (2, 'Vertu vegan',
+INSERT INTO challenges VALUES (2, 'Vertu vegan í dag',
                                'Rannsóknir hafa einnig sýnt fram á að fæði er byggir að stærstum hluta
                                 á afurðum úr plönturíkinu dregur mjög úr líkum á að fólk fái krabbamein
                                 og hjarta- og æðasjúkdóma. Grænkerar hafa einnig almennt mun lægri blóðþrýsting
