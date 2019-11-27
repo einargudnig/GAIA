@@ -153,16 +153,7 @@ public class UserController {
             * we can acces username, email, etc
             */
 
-            /* ***********************
-            // Her thyrftum vid ad finna challid, kannski a challenges? eda tengi
-            Challenge myChall = (Challenge) challengeService.findAll();
-            long challengeId = 0;
-            Optional<ChallengeLog> mychallId = challengeLogService.findById(challengeId);
-            model.addAttribute(myChall);
-            System.out.println("HER er Challenge " + myChall);
-            model.addAttribute(mychallId);
-            System.out.println("HERNA er CHALLENGE ID " + mychallId);
-            */
+
             model.addAttribute("challenges", challengeLogService.findAll());
             /* Here we search for all in challengeLog. For some reason we can only get the
             * id from that table. Maybe we always get ALL, because we are loggedin. */
