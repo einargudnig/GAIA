@@ -50,10 +50,10 @@ public class UserController {
         if(exists == null){
             // System.out.println("KEMST EG HINGAD??");
             userService.save(user);
-            System.out.println("Hvad er her " + user);
+            // System.out.println("Hvad er her " + user);
         }
         model.addAttribute("users", userService.findAll());
-        return "/users";
+        return "/login";
     }
 
 
@@ -95,14 +95,36 @@ public class UserController {
     @RequestMapping(value = "/loggedin", method = RequestMethod.GET)
     public String loggedinGET(HttpSession httpSession, Model model){
         model.addAttribute("user", userService.findAll());
+        // Find all users
         User sessionUser = (User) httpSession.getAttribute("LoggedInUser");
+        // Gets User that has httpSession from login.
         System.out.println("Sess " + sessionUser);
-        if(sessionUser  != null){
+        // prints out that user.
+        if(sessionUser  != null) {
+            // if sessionUser is not null we have logged someone in.
             model.addAttribute("loggedInUser", sessionUser);
+            // Give that user a "loggedinUser" 'value'
             User myUser = userService.findByUserName(sessionUser.userName);
+            // Search for the username of that sessionUser.
             model.addAttribute("user", myUser);
-            // Challenge challenge = challengeService.findById()
+            // Give that user a myuser 'value'
+
+            /* At this point we have the username of the loggedin user, by searching in the
+            * User table, with User myUser we get the whole loggedIn user entity so
+            * we can acces username, email, etc
+            */
+
+
+
             model.addAttribute("challenges", challengeLogService.findAll());
+            /* Here we search for all in challengeLog. For some reason we can only get the
+            * id from that table. Maybe we always get ALL, because we are loggedin. */
+
+            // System.out.println();
+
+
+
+            // model.addAttribute("userChallenges", challengeService.findAll());
             return "loggedInUser";
         }
         return "redirect:/";

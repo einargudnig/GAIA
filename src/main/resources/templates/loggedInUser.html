@@ -112,9 +112,21 @@
                     <span>Áskorarnir mínar!</span>
                     <div class="container">
 
-                        <tr th:each="challenge : ${challenges}">
+                     <div>
+                         <form action="#" th:action="@{/showChallenges}"  th:object="${challenges}" method="post">
+                             <a th:href="@{/showChallenges}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+                         </form>
+                     </div>
 
-                            <td th:text="${challenge.id}">Challenge Id</td>
+                        <div class="container">
+
+                            <tr th:each="challenge : ${challenges}">
+
+                                <td th:text="${challenge.id}">Challenge Id</td>
+
+                            </tr>
+                        </div>
+
 
                         </tr>
                     </div>

@@ -40,7 +40,6 @@ public class UserServiceImplementation implements UserService {
     }
 
 
-
     /*
     * function that deletes user from database
     */
