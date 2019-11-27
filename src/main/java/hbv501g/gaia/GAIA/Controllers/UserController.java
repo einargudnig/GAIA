@@ -1,21 +1,26 @@
 package hbv501g.gaia.GAIA.Controllers;
 
 import hbv501g.gaia.GAIA.Entities.Challenge;
+import hbv501g.gaia.GAIA.Entities.ChallengeLog;
 import hbv501g.gaia.GAIA.Entities.User;
 import hbv501g.gaia.GAIA.Services.ChallengeLogService;
 import hbv501g.gaia.GAIA.Services.ChallengeService;
 import hbv501g.gaia.GAIA.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.net.ssl.HttpsURLConnection;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.math.BigInteger;
 import java.time.LocalDateTime;
+import java.util.Collection;
+import java.util.Optional;
 
 @Controller
 public class UserController {
@@ -73,6 +78,23 @@ public class UserController {
      * This part should use the POST method from the login field
      * and use that data for the login procedure.
      */
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String logout(Model model, HttpSession httpSession){
+        System.out.println("Fallið logout");
+        User sessionUser = (User) httpSession.getAttribute("LoggedInUser");
+        if(sessionUser  != null) {
+            System.out.println("Rassamaðurinn");
+            model.addAttribute("loggedInUser", sessionUser);
+            User myUser = userService.findByUserName(sessionUser.userName);
+            httpSession.removeAttribute(myUser.userName);
+            System.out.println("Logged out");
+            return "redirect:/";
+        }
+        System.out.println("Ekki logged out");
+        return "/rassgat";
+
+    }
+
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String loginPOST(@Valid User user, BindingResult result, Model model, HttpSession httpSession){
         // System.out.println("BANANI " + user);
