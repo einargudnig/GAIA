@@ -13,5 +13,5 @@ public interface ChallengeLogRepository extends JpaRepository<ChallengeLog, Long
     ChallengeLog save(ChallengeLog challengeLog);
     void delete(ChallengeLog challengeLog);
     List<ChallengeLog> findAll();
-
+    Optional<ChallengeLog> findById(long id);
 }

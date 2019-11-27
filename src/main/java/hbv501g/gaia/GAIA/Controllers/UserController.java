@@ -1,6 +1,7 @@
 package hbv501g.gaia.GAIA.Controllers;
 
 import hbv501g.gaia.GAIA.Entities.Challenge;
+import hbv501g.gaia.GAIA.Entities.ChallengeLog;
 import hbv501g.gaia.GAIA.Entities.User;
 import hbv501g.gaia.GAIA.Services.ChallengeLogService;
 import hbv501g.gaia.GAIA.Services.ChallengeService;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.math.BigInteger;
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Controller
 public class UserController {
@@ -109,16 +111,25 @@ public class UserController {
             model.addAttribute("loggedInUser", sessionUser);
             // Give that user a "loggedinUser" 'value'
             User myUser = userService.findByUserName(sessionUser.userName);
+            System.out.println("Herna aetti eg ad vera med loggedin user" + myUser);
             // Search for the username of that sessionUser.
             model.addAttribute("user", myUser);
             // Give that user a myuser 'value'
-
+            /* ****************************************************************************************** */
             /* At this point we have the username of the loggedin user, by searching in the
             * User table, with User myUser we get the whole loggedIn user entity so
             * we can acces username, email, etc
             */
 
-
+            /* *********************** */
+            // Her thyrftum vid ad finna challid, kannski a challenges? eda tengi
+            Challenge myChall = (Challenge) challengeService.findAll();
+            long challengeId = 0;
+            Optional<ChallengeLog> mychallId = challengeLogService.findById(challengeId);
+            model.addAttribute(myChall);
+            System.out.println("HER er Challenge " + myChall);
+            model.addAttribute(mychallId);
+            System.out.println("HERNA er CHALLENGE ID " + mychallId);
 
             model.addAttribute("challenges", challengeLogService.findAll());
             /* Here we search for all in challengeLog. For some reason we can only get the
