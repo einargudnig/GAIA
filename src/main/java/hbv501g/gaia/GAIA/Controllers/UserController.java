@@ -19,7 +19,6 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.math.BigInteger;
 import java.time.LocalDateTime;
-import java.util.Collection;
 import java.util.Optional;
 
 @Controller
@@ -53,7 +52,8 @@ public class UserController {
         User exists = userService.findByUserName(user.userName);
         // System.out.println("HALLO " + exists);
         if(exists == null){
-            // System.out.println("KEMST EG HINGAD??");
+            System.out.println("KEMST EG HINGAD??" + user.consIndex);
+
             userService.save(user);
             int trans = user.getTransIndex();
             int food = user.getFoodIndex();
@@ -68,6 +68,7 @@ public class UserController {
             user.setWorstCase(original);
             user.setCurrCase(original);
             userService.save(user);
+
             // System.out.println("Hvad er her " + user);
         }
 
@@ -142,17 +143,26 @@ public class UserController {
             model.addAttribute("loggedInUser", sessionUser);
             // Give that user a "loggedinUser" 'value'
             User myUser = userService.findByUserName(sessionUser.userName);
+            System.out.println("Herna aetti eg ad vera med loggedin user" + myUser);
             // Search for the username of that sessionUser.
             model.addAttribute("user", myUser);
             // Give that user a myuser 'value'
-
+            /* ****************************************************************************************** */
             /* At this point we have the username of the loggedin user, by searching in the
             * User table, with User myUser we get the whole loggedIn user entity so
             * we can acces username, email, etc
             */
 
-
-
+            /* ***********************
+            // Her thyrftum vid ad finna challid, kannski a challenges? eda tengi
+            Challenge myChall = (Challenge) challengeService.findAll();
+            long challengeId = 0;
+            Optional<ChallengeLog> mychallId = challengeLogService.findById(challengeId);
+            model.addAttribute(myChall);
+            System.out.println("HER er Challenge " + myChall);
+            model.addAttribute(mychallId);
+            System.out.println("HERNA er CHALLENGE ID " + mychallId);
+            */
             model.addAttribute("challenges", challengeLogService.findAll());
             /* Here we search for all in challengeLog. For some reason we can only get the
             * id from that table. Maybe we always get ALL, because we are loggedin. */
