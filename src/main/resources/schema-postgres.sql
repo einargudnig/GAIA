@@ -14,7 +14,9 @@ CREATE TABLE users(id serial PRIMARY KEY,
                    transIndex integer DEFAULT 0,
                    foodIndex integer DEFAULT 0,
                    houseIndex integer DEFAULT 0,
-                   consIndex integer DEFAULT 0
+                   consIndex integer DEFAULT 0,
+                   worstCase integer DEFAULT 0,
+                   currCase integer DEFAULT 0
                    );
 
 CREATE TABLE challenges(id serial PRIMARY KEY,
