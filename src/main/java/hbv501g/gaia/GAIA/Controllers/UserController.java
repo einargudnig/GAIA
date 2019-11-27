@@ -52,8 +52,10 @@ public class UserController {
             userService.save(user);
             // System.out.println("Hvad er her " + user);
         }
+
         model.addAttribute("users", userService.findAll());
         return "/login";
+
     }
 
 
