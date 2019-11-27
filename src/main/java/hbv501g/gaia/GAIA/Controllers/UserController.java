@@ -48,8 +48,10 @@ public class UserController {
         User exists = userService.findByUserName(user.userName);
         // System.out.println("HALLO " + exists);
         if(exists == null){
-            // System.out.println("KEMST EG HINGAD??");
+            System.out.println("KEMST EG HINGAD??" + user.consIndex);
+
             userService.save(user);
+
             // System.out.println("Hvad er her " + user);
         }
 
