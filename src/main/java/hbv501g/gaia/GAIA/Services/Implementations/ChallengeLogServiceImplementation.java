@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ChallengeLogServiceImplementation implements ChallengeLogService {
@@ -31,6 +32,11 @@ public class ChallengeLogServiceImplementation implements ChallengeLogService {
     @Override
     public List<ChallengeLog> findAll() {
         return repository.findAll();
+    }
+
+    @Override
+    public Optional<ChallengeLog> findById(long id) {
+        return repository.findById(id);
     }
 
     /*
