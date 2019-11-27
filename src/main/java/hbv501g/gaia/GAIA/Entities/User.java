@@ -48,12 +48,18 @@ public class User {
     @Column(name="consIndex")
     public int consIndex;
 
+    @Column(name="worstCase")
+    public int worstCase;
+
+    @Column(name="currCase")
+    public int currCase;
+
     public User() {
     }
 
     /* USER */
     public User(String userName, String email, String password, String userInfo, Double originalIndex, Double currIndex,
-                int transIndex, int foodIndex, int houseIndex, int consIndex) {
+                int transIndex, int foodIndex, int houseIndex, int consIndex, int worstCase, int currCase) {
         this.userName = userName;
         this.email = email;
         this.password = password;
@@ -64,6 +70,8 @@ public class User {
         this.foodIndex = foodIndex;
         this.houseIndex = houseIndex;
         this.consIndex = consIndex;
+        this.worstCase = worstCase;
+        this.currCase = currCase;
     }
 
     public long getId() {
@@ -151,6 +159,16 @@ public class User {
     public int getConsIndex() { return consIndex; }
 
     public void setConsIndex(int consIndex) { this.consIndex = consIndex; }
+
+    /* GETTERS & SETTERS for worstCase */
+    public int getWorstCase() { return worstCase; }
+
+    public void setWorstCase(int worstCase) { this.worstCase = worstCase; }
+
+    /* GETTERS & SETTERS for consIndex */
+    public int getCurrCase() { return currCase; }
+
+    public void setCurrCase(int currCase) { this.currCase = currCase; }
 
     /*
     * Test for signUp

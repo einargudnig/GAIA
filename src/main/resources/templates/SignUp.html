@@ -60,37 +60,35 @@
         <label class="labelit">Hvaða samgöngur notar þú?</label>
         <select th:field="${user.transIndex}">
             <option th:value="0" >Labba</option>
-            <option th:value="5" >Hjóla</option>
-            <option th:value="8" >Strætó</option>
-            <option th:value="12" >Lítill bíll</option>
-            <option th:value="15" >Stór bíll</option>
-            <option th:value="2500" >HMS Queen Mary</option>
+            <option th:value="0" >Hjóla</option>
+            <option th:value="1700" >Strætó</option>
+            <option th:value="2600" >Lítill bíll</option>
+            <option th:value="3950" >Stór bíll</option>
         </select>
 
             <label class="labelit">Hvað eftirtöldu lýsir þínu mataræði best?</label>
             <select th:field="${user.foodIndex}">
-            <option th:value="0" >Vegan</option>
-            <option th:value="5" >Pescitarian</option>
-            <option th:value="8" >Grænmetisæta</option>
-            <option th:value="12" >Almennt fæði</option>
-            <option th:value="15" >Ketó</option>
+            <option th:value="1250" >Vegan</option>
+            <option th:value="1600" >Grænmetisæta</option>
+            <option th:value="1700" >Almennt fæði</option>
+            <option th:value="2000" >Ketó</option>
             <option th:value="2500" >Carnivore</option>
         </select>
 
             <label class="labelit">Hvernig hitar þú hús þitt?</label>
         <select th:field="${user.houseIndex}">
             <option th:value="0" >Hitaveita</option>
-            <option th:value="5" >Rafmagn</option>
+            <option th:value="50" >Rafmagn</option>
         </select>
 
-            <label class="labelit">Hversu mikið eyðir þú í ..?</label>
+            <label class="labelit">Hversu mikið eyðir þú á mánuði í munaðarvörur?</label>
         <select th:field="${user.consIndex}">
-            <option th:value="5" >undir 100.000 á mánuði</option>
-            <option th:value="10">100-250 þús</option>
-            <option th:value="20">250-500 þús</option>
-            <option th:value="30">500-750 þús</option>
-            <option th:value="40">750 þús - 1 milljón</option>
-            <option th:value="50" >yfir miljón</option>
+            <option th:value="500" >undir 100.000 á mánuði</option>
+            <option th:value="1000">100-250 þús</option>
+            <option th:value="2000">250-500 þús</option>
+            <option th:value="3000">500-750 þús</option>
+            <option th:value="4000">750 þús - 1 milljón</option>
+            <option th:value="5000" >yfir miljón</option>
         </select>
 
         </div>

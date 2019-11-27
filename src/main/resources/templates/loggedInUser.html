@@ -9,9 +9,42 @@
 
     <link th:href="@{loggedin.css}" href="../static/loggedin.css" rel="stylesheet" type="text/css" media="screen" />
 
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script th:inline="javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        /*<![CDATA[*/
+
+        var fyrir = /*[[${user.worstCase}]]*/ '0';
+        var eftir = /*[[${user.currCase}]]*/ '0';
+
+        /*]]>*/
+
+        var kisi = fyrir/4;
+        var voffi = eftir/4;
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Tími', 'Fyrir breytingu', 'Eftir breytingu'],
+                ['',  kisi,      voffi],
+                ['',  kisi*2,      voffi*2],
+                ['',  kisi*3,       voffi*3],
+                ['',  kisi*4,      voffi*4]
+            ]);
+
+            var options = {
+                title: 'Breyting á Kolefnisspori',
+                hAxis: {title: 'Tími', titleTextStyle: {color: '#333'}},
+                vAxis: {minValue: 0}
+            };
+
+            var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+
+            chart.draw(data, options);
+        }
+    </script>
+
 </head>
 <body>
 
@@ -45,71 +78,61 @@
 <div class="container">
     <div class="row">
         <div class="panel panel-default">
-            <div class="panel-heading">  <h4 >Notandasíða</h4></div>
             <div class="panel-body">
                 <div class="profilePhoto">
                     <img class="img-circle img-responsive" alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profile-image1">
+                    <h2 th:text="${user.userName}"></h2>
                 </div>
 
             </div>
-            <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8" >
-                <div class="container" >
+            <div class="yfir_div">
+                <div class="container_details" >
+                    <div class="upplysingar">
 
-                    <h2 th:text="${user.userName}"></h2>
-
-                </div>
-                <hr>
-                <div class="container details" >
-                    <div class="row>">
-
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="kassi">
                             <div class="card" style="width: 18rem;">
                                 <div class="card-body">
-                                     <h6 class="card-title" th:text="${user.email}"></h6>
-                                    <h5 class="card-subtitle mb-2 text-muted">Tölvupóstur notanda</h5>
+                                     <h6 class="card-title" >Tölvupóstur notanda</h6>
+                                    <h5 class="card-subtitle mb-2 text-muted" th:text="${user.email}" ></h5>
                                     <i class="fa fa-instagram" aria-hidden="true"></i>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="kassi">
                             <div class="card" style="width: 18rem;">
                                 <div class="card-body">
-                                    <h6 class="card-title">Upplýsingar</h6>
-                                    <h5 class="card-subtitle mb-2 text-muted">Upplýsingar um notanda</h5>
-                                    <p th:text="${user.userInfo}"></p>
+                                    <h6 class="card-title">Upplýsingar um notanda</h6>
+                                    <h5 class="card-subtitle mb-2 text-muted" th:text="${user.userInfo}"></h5>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="kassi">
                             <div class="card" style="width: 18rem;">
                                 <div class="card-body">
                                     <h6 class="card-title" th:text="${user.originalIndex}"></h6>
                                     <h5 class="card-subtitle mb-2 text-muted">Uppranlegt carbon fótspor</h5>
-                                    <p>Þessi tala er fundin þegar notandi skráir sig á síðuna í fyrsta sinn.</p>
+                                    <p>Þessi tala stendur fyrir grömm af Co2 per dag miðað við svör notanda þegar hann skráði sig á síðun.</p>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="kassi">
                         <div class="card" style="width: 18rem;">
                                 <div class="card-body">
                                     <h6 class="card-title" th:text="${user.currIndex}"></h6>
                                     <h5 class="card-subtitle mb-2 text-muted">Núverandi carbon fótspor</h5>
-                                    <p>Þessi tala er fundin þegar notandi tekur að sér að framkvæma hinar ýmsu áskoranir.</p>
+                                    <p>Þessi tala stendur fyrir grömm af Co2 per dag eftir breytingar.</p>
                                 </div>
                             </div>
                         </div>
 
                     </div>
                 </div>
-
-
-                </div>
                 <hr>
-                <div class="col-sm-5 col-xs-6 tital ">
-                    <span>Áskorarnir mínar!</span>
+                <div class="Askorun">
+                    <h2>Áskorarnir mínar!</h2>
                     <div class="container">
 
                      <div>
@@ -133,6 +156,10 @@
 
 
                 </div>
+                <div id="chart_div" style="width: 900px; height: 500px"></div>
+                <div id="getin"></div>
+
+            </div>
             </div>
         </div>
     </div>
@@ -162,6 +189,30 @@
     </div>
     <!-- /.container -->
 </footer>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+
+    var nafn =  /*[[${user.userName}]]*/ 'Notandi';
+    var kolfyrir = /*[[${user.worstCase}]]*/ '0';
+    var koleftir = /*[[${user.currCase}]]*/ '0';
+    var rauntala = kolfyrir - koleftir;
+    var brumm = rauntala / 104;
+    var brummround = Math.round(brumm*10)/10;
+
+    /*]]>*/
+
+    var strengur = nafn + " hefur sparað " + rauntala + "g af koltvísýring, það samsvarar " + brummround + "km í einkabíl.";
+
+    console.log(strengur);
+
+    var lala = document.createElement("p");
+    var setningin = document.createTextNode(strengur);
+    lala.appendChild(setningin);
+
+    var undirmedthig = document.getElementById("getin");
+    undirmedthig.appendChild(lala);
+</script>
 
 </body>
 </html>

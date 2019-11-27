@@ -1,0 +1,94 @@
+html, body {
+    height: 100%; !important;
+    margin: 0;
+}
+
+body{
+    display:flex;
+    flex-direction:column;
+}
+
+header {
+    padding: 156px 0 100px;
+}
+
+section {
+    padding: 50px 0;
+}
+
+header {
+    background-image: url("https://images.pexels.com/photos/459225/pexels-photo-459225.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260");
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-bottom: 32px;
+}
+
+h2 {
+    text-align: center;
+}
+
+
+h1 {
+    text-shadow:
+            -1px -1px 0 #000,
+            1px -1px 0 #000,
+            -1px 1px 0 #000,
+            1px 1px 0 #000;
+}
+
+.no_effect {
+    text-shadow: none;
+}
+
+.lead {
+    text-shadow:
+            -1px -1px 0 #000,
+            1px -1px 0 #000,
+            -1px 1px 0 #000,
+            1px 1px 0 #000;
+}
+
+.panel-body {
+    padding-right: 16px;
+}
+
+.img-circle {
+    border-radius: 50%;
+    max-width: 300px;
+    height: auto;
+    padding-bottom: 4px
+}
+
+.yfir_div {
+    max-width: 632px;
+}
+
+.panel {
+    display: flex; !important;
+}
+
+.container_details {
+    display: flex;
+    max-width: 532px;
+}
+
+.upplysingar {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.kassi {
+    max-width: 230px;
+    padding: 5px;
+}
+
+.Askorun {
+    padding-top: 16px;
+}
+
+footer{
+    height: 60px;
+    margin-top:auto;
+}
+
