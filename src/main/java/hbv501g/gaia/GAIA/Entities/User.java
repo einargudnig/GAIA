@@ -31,10 +31,10 @@ public class User {
     public String userInfo;
 
     @Column(name="originalindex")
-    public Double originalIndex;
+    public double originalIndex;
 
     @Column(name="currindex")
-    public Double currIndex;
+    public double currIndex;
 
     @Column(name="transIndex")
     public int transIndex;
@@ -58,7 +58,7 @@ public class User {
     }
 
     /* USER */
-    public User(String userName, String email, String password, String userInfo, Double originalIndex, Double currIndex,
+    public User(String userName, String email, String password, String userInfo, double originalIndex, double currIndex,
                 int transIndex, int foodIndex, int houseIndex, int consIndex, int worstCase, int currCase) {
         this.userName = userName;
         this.email = email;
@@ -127,16 +127,18 @@ public class User {
 
 
     /* GETTERS & SETTERS for originalIndex */
-    public void setOriginalIndex(Double originalIndex) {
+    public double getOriginalIndex() { return originalIndex; }
+
+    public void setOriginalIndex(double originalIndex) {
         this.originalIndex = originalIndex;
     }
 
     /* GETTERS & SETTERS for currIndex */
-    public Double getCurrIndex() {
+    public double getCurrIndex() {
         return currIndex;
     }
 
-    public void setCurrIndex(Double currIndex) {
+    public void setCurrIndex(double currIndex) {
         this.currIndex = currIndex;
     }
 

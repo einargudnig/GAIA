@@ -5,7 +5,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "tengi")
-public class ChallengeLog {
+public class  ChallengeLog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
@@ -29,15 +29,15 @@ public class ChallengeLog {
 
     public void setId(long id) { this.id = id; }
 
-    public long getUserId() {
+    public long getUserid() {
         return userid;
     }
 
-    public void setUserId(long id) {
+    public void setUserid(long id) {
         this.userid = userid;
     }
 
-    public long getChallengeId() { return challengeid; }
+    public long getChallengeid() { return challengeid; }
 
-    public void setChallengeId(long id) { this.challengeid = challengeid; }
+    public void setChallengeid(long id) { this.challengeid = challengeid; }
 }

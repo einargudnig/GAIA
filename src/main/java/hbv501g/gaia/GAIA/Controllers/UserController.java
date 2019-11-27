@@ -55,6 +55,19 @@ public class UserController {
         if(exists == null){
             // System.out.println("KEMST EG HINGAD??");
             userService.save(user);
+            int trans = user.getTransIndex();
+            int food = user.getFoodIndex();
+            int house = user.getHouseIndex();
+            int cons = user.getConsIndex();
+            int original = trans + food + house + cons;
+            System.out.println(original);
+            double d = original;
+            System.out.println(d);
+            user.setOriginalIndex(d);
+            user.setCurrIndex(d);
+            user.setWorstCase(original);
+            user.setCurrCase(original);
+            userService.save(user);
             // System.out.println("Hvad er her " + user);
         }
 
