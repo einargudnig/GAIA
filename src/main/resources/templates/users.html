@@ -65,7 +65,7 @@
        <!-- <th>Email</th> -->
         <th>Original Index</th>
         <th>User Info</th>
-        <th>Trans Index</th>
+        <th>Current Index</th>
     </tr>
 
     <tr id="dbTable" th:each="user : ${users}">
@@ -74,8 +74,7 @@
         <!-- <td th:text="${user.email}">Email</td> Ekki sýna email users í search? -->
         <td th:text="${user.originalIndex}">Original Index</td>
         <td th:text="${user.userInfo}">Info</td>
-        <td th:text="${user.transIndex}">trans Index</td>
-        <td th:text="${user.consIndex}">consIndex</td>
+        <td th:text="${user.currIndex}">Current Index</td>
     </tr>
 </table>
 </div>
