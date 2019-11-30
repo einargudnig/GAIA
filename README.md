@@ -17,8 +17,8 @@ in this file, this ensures that you have your database set up in the same way we
 
 Next is to run the data-postgres.sql file, that inserts data to the already built database. This data contains some challenges and 4 users.
 Here are the users and their password for signing in:
-Username -- Password\\
-Einar    -- ranie\\
-Viktor   -- rotkiv\\
-Ómar     -- ramó\\
-Páll     -- lláp\\
+Username -- Password  
+Einar    -- ranie  
+Viktor   -- rotkiv  
+Ómar     -- ramó  
+Páll     -- lláp  
