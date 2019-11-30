@@ -29,10 +29,6 @@ public class ChallengeLogController {
         this.challengeLogService = challengeLogService;
     }
 
-    /*@RequestMapping(value = "/addChallenge/{id}", method = RequestMethod.GET)
-    public String addChallengeToUserGET(ChallengeLog challengeLog){
-        return "challenges";
-    }*/
 
     @RequestMapping(value = "/addChallenge/{id}", method = {RequestMethod.GET, RequestMethod.POST})
     public String addChallengeToUser(@PathVariable("id") long id, Model model, HttpSession httpSession){

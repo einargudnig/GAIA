@@ -1,25 +1,19 @@
 package hbv501g.gaia.GAIA.Controllers;
 
-import hbv501g.gaia.GAIA.Entities.Challenge;
-import hbv501g.gaia.GAIA.Entities.ChallengeLog;
+
 import hbv501g.gaia.GAIA.Entities.User;
 import hbv501g.gaia.GAIA.Services.ChallengeLogService;
 import hbv501g.gaia.GAIA.Services.ChallengeService;
 import hbv501g.gaia.GAIA.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.net.ssl.HttpsURLConnection;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.math.BigInteger;
-import java.time.LocalDateTime;
-import java.util.Optional;
 
 @Controller
 public class UserController {
@@ -38,6 +32,9 @@ public class UserController {
 
     /* ******************************************************** */
     /* SignUp for Users */
+    /* NOTE!!!
+    * We MUST change and encript password, can't store them like regular strings
+    * That's bad :( */
     @RequestMapping(value = "/signup", method = RequestMethod.GET)
     public String signUpGET(User user){
         return "SignUp";
@@ -45,7 +42,7 @@ public class UserController {
 
     @RequestMapping(value = "/signup", method = RequestMethod.POST)
     public String signUpPOST(@Valid User user, BindingResult result, Model model){
-        System.out.println("HERNA " + user);
+        // System.out.println("HERNA " + user);
         if(result.hasErrors()){
             return "SignUp";
         }
@@ -62,21 +59,19 @@ public class UserController {
             int original = trans + food + house + cons;
             System.out.println(original);
             double d = original;
-            System.out.println(d);
+            // System.out.println(d);
             user.setOriginalIndex(d);
             user.setCurrIndex(d);
             user.setWorstCase(original);
             user.setCurrCase(original);
             userService.save(user);
 
-            // System.out.println("Hvad er her " + user);
         }
 
         model.addAttribute("users", userService.findAll());
         return "/login";
 
     }
-
 
     /* ******************************************************** */
     /* To Log in user
@@ -88,8 +83,7 @@ public class UserController {
         return "login";
     }
 
-    /* ATHATH Þurfum að breyta public breytum í private entities. Fyrir ALLT!
-     * Breytum svo hér fyrir neðan..
+    /*
      * User exists = userService.findUserByEmail(user.getEmail())
      * This part should use the POST method from the login field
      * and use that data for the login procedure.
@@ -107,20 +101,18 @@ public class UserController {
             return "redirect:/";
         }
         System.out.println("Ekki logged out");
-        return "/rassgat";
+        return "/error";
 
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String loginPOST(@Valid User user, BindingResult result, Model model, HttpSession httpSession){
-        // System.out.println("BANANI " + user);
         if(result.hasErrors()){
             return "login";
         }
         model.addAttribute("user", userService.findAll());
-        // System.out.println("EPLI");
         User exists = userService.login(user);
-        // System.out.println("Ananas " + exists);
+
         if(exists != null){
             httpSession.setAttribute("LoggedInUser", user);
             return "redirect:/loggedin";
@@ -151,14 +143,12 @@ public class UserController {
             /* At this point we have the username of the loggedin user, by searching in the
             * User table, with User myUser we get the whole loggedIn user entity so
             * we can acces username, email, etc
+            * THIS SHOULD HELP US TO SHOWCASE THE CHALLENGES THE LOGGED IN USER HAS AQUIRED
+            * However it doesn't work like we want it to.
             */
 
 
             model.addAttribute("challenges", challengeLogService.findAll());
-            /* Here we search for all in challengeLog. For some reason we can only get the
-            * id from that table. Maybe we always get ALL, because we are loggedin. */
-
-            // System.out.println();
 
 
 
@@ -168,17 +158,9 @@ public class UserController {
         return "redirect:/";
     }
 
-    /* ***************************************************** */
-    /* To see what users are in the database */
-    /* Virkar ad skoda /users */
-    /* //  Taka sma út til að testa search
-    @RequestMapping(value = "/users", method = RequestMethod.GET)
-    public String usersGET(Model model) {
-        model.addAttribute("users", userService.findAll());
-        return "users";
-    }
-    */
-
+    /*
+    * Search for other users.
+     */
     @RequestMapping(value = "/users", method = RequestMethod.GET)
     public String userGET(Model model) {
         model.addAttribute("users", new User());
