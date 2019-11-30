@@ -16,7 +16,7 @@ In intelliJ you can build the project, than it is best to run the schema-postgre
 in this file, this ensures that you have your database set up in the same way we did.
 
 Next is to run the data-postgres.sql file, that inserts data to the already built database. This data contains some challenges and 4 users.
-Here are the users and their password for signing in:
+Here are the users and their password for signing in:  
 Username -- Password  
 Einar    -- ranie  
 Viktor   -- rotkiv  
