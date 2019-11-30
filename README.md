@@ -9,7 +9,10 @@ You need to have postgres installed and working on your machine.
 You need to clone the repo and/or get the zip file. Open IntelliJ or a IDE that is simillar, we used intelliJ so this may be
 slightly different if you have anothe IDE.
 
-Find the Application properties file.
+It is important to have maven and a pom.xml file for the dependcies we used int this project.  
+IntellJ imports and updates dependencies automaticly for the user, at least it did for us, so we recommend using intelliJ.
+
+Find the application.properties file.  
 Put your postgres credentials there, username and password. You can see comments in that file on where to put it.
 
 In intelliJ you can build the project, than it is best to run the schema-postgres.sql. This file builds the database according to the schema
