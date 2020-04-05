@@ -1,5 +1,7 @@
 package hbv501g.gaia.GAIA.Entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
@@ -17,7 +19,7 @@ public class User {
 
     @Column(name="username")
     @NotNull
-    public String userName;
+    public String UName;
 
     @Column(name="email")
     @Email
@@ -54,13 +56,11 @@ public class User {
     @Column(name="currCase")
     public int currCase;
 
-    public User() {
-    }
 
     /* USER */
-    public User(String userName, String email, String password, String userInfo, double originalIndex, double currIndex,
+    public User(String UName, String email, String password, String userInfo, double originalIndex, double currIndex,
                 int transIndex, int foodIndex, int houseIndex, int consIndex, int worstCase, int currCase) {
-        this.userName = userName;
+        this.UName = UName;
         this.email = email;
         this.password = password;
         this.userInfo = userInfo;
@@ -74,6 +74,9 @@ public class User {
         this.currCase = currCase;
     }
 
+    public User(String uName, String encode) {
+    }
+
     public long getId() {
         return id;
     }
@@ -84,16 +87,16 @@ public class User {
 
     @Override
     public String toString() {
-        return userName;
+        return UName;
     }
 
     /* GETTERS & SETTERS for name */
-    public String getUserName() {
-        return userName;
+    public String getUName() {
+        return UName;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUName(String userName) {
+        this.UName = userName;
     }
 
 
@@ -107,6 +110,7 @@ public class User {
     }
 
     /* GETTERS & SETTERS for password */
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     public String getPassword() {
         return password;
     }

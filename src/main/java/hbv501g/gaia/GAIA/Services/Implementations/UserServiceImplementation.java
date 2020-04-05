@@ -5,6 +5,7 @@ import hbv501g.gaia.GAIA.Entities.User;
 import hbv501g.gaia.GAIA.Repositories.UserRepository;
 import hbv501g.gaia.GAIA.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,9 +26,8 @@ public class UserServiceImplementation implements UserService {
     */
     @Override
     public User save(User user) {
-        System.out.println(user);
-        System.out.println(user.email);
-        return repository.save(user);
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        return repository.save(new User(user.getUName(), encoder.encode(user.getPassword())));
     }
 
     /*
@@ -62,8 +62,8 @@ public class UserServiceImplementation implements UserService {
     * username
     */
     @Override
-    public User findByUserName(String userName) {
-        return repository.findByUserName(userName);
+    public User findByUName(String uName) {
+        return repository.findByUName(uName);
     }
 
     /*
@@ -80,7 +80,7 @@ public class UserServiceImplementation implements UserService {
      */
     @Override
     public User login(User user) {
-        User exists = findByUserName(user.userName);
+        User exists = findByUName(user.UName);
 
         System.out.println("HERNA er eg ad logga inn" + exists);
 

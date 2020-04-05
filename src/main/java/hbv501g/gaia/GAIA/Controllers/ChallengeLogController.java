@@ -12,10 +12,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
 
-@Controller
+@RestController
+@RequestMapping("/api")
 public class ChallengeLogController {
 
     private UserService userService;
@@ -29,7 +31,7 @@ public class ChallengeLogController {
         this.challengeLogService = challengeLogService;
     }
 
-
+    /*
     @RequestMapping(value = "/addChallenge/{id}", method = {RequestMethod.GET, RequestMethod.POST})
     public String addChallengeToUser(@PathVariable("id") long id, Model model, HttpSession httpSession){
         Challenge challenge = challengeService.findById(id).orElseThrow(()-> new IllegalArgumentException("Invalid challenge ID"));
@@ -44,7 +46,7 @@ public class ChallengeLogController {
         long sessionUserId = myUser.getId();
         model.addAttribute("tengi", challengeLogService.addChallengeToUser(sessionUserId, challengeId));
         return "redirect:/challenges";
-    }
+    } */
 
 
 }

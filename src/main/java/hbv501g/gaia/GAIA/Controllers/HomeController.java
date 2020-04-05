@@ -1,6 +1,7 @@
 package hbv501g.gaia.GAIA.Controllers;
 
 
+import hbv501g.gaia.GAIA.Entities.Challenge;
 import hbv501g.gaia.GAIA.Entities.ChallengeLog;
 import hbv501g.gaia.GAIA.Services.ChallengeLogService;
 import hbv501g.gaia.GAIA.Services.ChallengeService;
@@ -10,11 +11,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 
-@Controller
+@RestController
+@RequestMapping("/api")
 public class HomeController {
 
     private ChallengeService challengeService;
@@ -26,38 +30,36 @@ public class HomeController {
         this.challengeLogService = challengeLogService;
     }
 
-    @RequestMapping("/")
-    public String Home() {
+    //@RequestMapping("/")
+    /* public String Home() {
         return "Index";
-    }
+    } */
 
 
-    @RequestMapping("challenges")
-    public String ChallengePage() { return "ChallengePage"; }
+    @RequestMapping("/challenges")
+    public List<Challenge> ChallengePage() { return challengeService.findAll(); }
 
-    @RequestMapping("skilmalar")
-    public String Skilmalar() { return "Skilmalar"; }
+    //@RequestMapping("skilmalar")
+    //public String Skilmalar() { return "Skilmalar"; }
 
 
     /* ******************************************************** */
     /* To see challenges in the database */
-    /* Virkar ad skoda /challenges */
+    /* Virkar ad skoda /challenges
     @RequestMapping(value = "/challenges", method = RequestMethod.GET)
     public String challengesGET(Model model) {
         model.addAttribute("challenges", challengeService.findAll());
         return "challenges";
-    }
+    } */
 
     /* ******************************************************** */
-    /* To see challenges user has accepted */
+    /* To see challenges user has accepted
    @RequestMapping(value = "/showChallenge", method = {RequestMethod.GET, RequestMethod.POST})
     public String showChallenge(@PathVariable("id") long id, Model model, HttpSession httpSession) {
        // Challenge challenge = challengeService.findById(id).orElseThrow(()-> new IllegalArgumentException("Invalid challenge ID"));
 
-
-
        return null;
-   }
+   } */
 
 
 

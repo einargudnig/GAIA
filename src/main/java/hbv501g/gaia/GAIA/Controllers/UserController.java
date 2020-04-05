@@ -5,6 +5,7 @@ import hbv501g.gaia.GAIA.Entities.User;
 import hbv501g.gaia.GAIA.Services.ChallengeLogService;
 import hbv501g.gaia.GAIA.Services.ChallengeService;
 import hbv501g.gaia.GAIA.Services.UserService;
+import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,8 +15,10 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.List;
 
-@Controller
+@RestController
+@RequestMapping("/api")
 public class UserController {
 
     private UserService userService;
@@ -34,7 +37,7 @@ public class UserController {
     /* SignUp for Users */
     /* NOTE!!!
     * We MUST change and encript password, can't store them like regular strings
-    * That's bad :( */
+    * That's bad :(
     @RequestMapping(value = "/signup", method = RequestMethod.GET)
     public String signUpGET(User user){
         return "SignUp";
@@ -70,24 +73,24 @@ public class UserController {
 
         model.addAttribute("users", userService.findAll());
         return "/login";
-
-    }
+    } */
 
     /* ******************************************************** */
     /* To Log in user
     *  First part of this login functionality is just to
     *  "fetch" the login page
-    */
+
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginGET(User user){
         return "login";
     }
+    */
 
     /*
      * User exists = userService.findUserByEmail(user.getEmail())
      * This part should use the POST method from the login field
      * and use that data for the login procedure.
-     */
+
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String logout(Model model, HttpSession httpSession){
         System.out.println("Fallið logout");
@@ -102,9 +105,9 @@ public class UserController {
         }
         System.out.println("Ekki logged out");
         return "/error";
+    } */
 
-    }
-
+    /* Erum held med JWT auth sem ser um thetta
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String loginPOST(@Valid User user, BindingResult result, Model model, HttpSession httpSession){
         if(result.hasErrors()){
@@ -118,55 +121,27 @@ public class UserController {
             return "redirect:/loggedin";
         }
         return "redirect:/";
-    }
+    } */
 
     /* ******************************************************** */
-    /* To see logged in user */
+    /* To see logged in user
+    * ATH Buid ad uppfaera med tilliti til JWT auth
+    *
     @RequestMapping(value = "/loggedin", method = RequestMethod.GET)
-    public String loggedinGET(HttpSession httpSession, Model model){
-        model.addAttribute("user", userService.findAll());
-        // Find all users
-        User sessionUser = (User) httpSession.getAttribute("LoggedInUser");
-        // Gets User that has httpSession from login.
-        System.out.println("Sess " + sessionUser);
-        // prints out that user.
-        if(sessionUser  != null) {
-            // if sessionUser is not null we have logged someone in.
-            model.addAttribute("loggedInUser", sessionUser);
-            // Give that user a "loggedinUser" 'value'
-            User myUser = userService.findByUserName(sessionUser.userName);
-            System.out.println("Herna aetti eg ad vera med loggedin user" + myUser);
-            // Search for the username of that sessionUser.
-            model.addAttribute("user", myUser);
-            // Give that user a myuser 'value'
-            /* ****************************************************************************************** */
-            /* At this point we have the username of the loggedin user, by searching in the
-            * User table, with User myUser we get the whole loggedIn user entity so
-            * we can acces username, email, etc
-            * THIS SHOULD HELP US TO SHOWCASE THE CHALLENGES THE LOGGED IN USER HAS AQUIRED
-            * However it doesn't work like we want it to.
-            */
+    public User loggedinGET(Authentication authentication){
+            return userService.findByUName(authentication.getName);
+    } */
 
-
-            model.addAttribute("challenges", challengeLogService.findAll());
-
-
-
-            // model.addAttribute("userChallenges", challengeService.findAll());
-            return "loggedInUser";
-        }
-        return "redirect:/";
-    }
-
+    //BUID AD LAGA
     /*
     * Search for other users.
      */
-    @RequestMapping(value = "/users", method = RequestMethod.GET)
-    public String userGET(Model model) {
-        model.addAttribute("users", new User());
-        return "users";
+    @RequestMapping("/users")
+    public List<User> userGET() {
+        return userService.findAll();
     }
 
+    /*
     @RequestMapping(value = "/users", method = RequestMethod.POST)
     public String userSubmit(@Valid @ModelAttribute("users") User user, BindingResult result, Model model, String userName) {
         System.out.println("hallo eg er inni userSubmit!");
@@ -175,7 +150,6 @@ public class UserController {
         }
         model.addAttribute("users", userService.findByUserName(userName));
         return "users";
-
-    }
+    } */
 
 }
