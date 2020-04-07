@@ -19,15 +19,17 @@ public class User {
 
     @Column(name="username")
     @NotNull
+    @JsonProperty(value = "UName")
     public String UName;
 
+    @Column(name="password")
+    // @Size(min=4, max=20)
+    public String password;
+
+    /*
     @Column(name="email")
     @Email
     public String email;
-
-    @Column(name="password")
-    @Size(min=4, max=20)
-    public String password;
 
     @Column(name="userinfo")
     public String userInfo;
@@ -57,7 +59,7 @@ public class User {
     public int currCase;
 
 
-    /* USER */
+    /* USER
     public User(String UName, String email, String password, String userInfo, double originalIndex, double currIndex,
                 int transIndex, int foodIndex, int houseIndex, int consIndex, int worstCase, int currCase) {
         this.UName = UName;
@@ -72,10 +74,8 @@ public class User {
         this.consIndex = consIndex;
         this.worstCase = worstCase;
         this.currCase = currCase;
-    }
+    } */
 
-    public User(String uName, String encode) {
-    }
 
     public long getId() {
         return id;
@@ -100,7 +100,7 @@ public class User {
     }
 
 
-    /* GETTERS & SETTERS for email */
+    /* GETTERS & SETTERS for email
     public String getEmail() {
         return email;
     }
@@ -120,24 +120,30 @@ public class User {
     }
 
 
-    /* GETTERS & SETTERS for userInfo */
+
+    public User(String UName, String password) {
+        this.UName = UName;
+        this.password = password;
+    }
+
+    /* GETTERS & SETTERS for userInfo
     public String getUserInfo() {
         return userInfo;
     }
 
     public void setUserInfo(String userInfo) {
-        this.password = userInfo;
+        this.userInfo= userInfo;
     }
 
 
-    /* GETTERS & SETTERS for originalIndex */
+    /* GETTERS & SETTERS for originalIndex
     public double getOriginalIndex() { return originalIndex; }
 
     public void setOriginalIndex(double originalIndex) {
         this.originalIndex = originalIndex;
     }
 
-    /* GETTERS & SETTERS for currIndex */
+    /* GETTERS & SETTERS for currIndex
     public double getCurrIndex() {
         return currIndex;
     }
@@ -146,32 +152,32 @@ public class User {
         this.currIndex = currIndex;
     }
 
-    /* GETTERS & SETTERS for transIndex */
+    /* GETTERS & SETTERS for transIndex
     public int getTransIndex() { return transIndex; }
 
     public void setTransIndex(int transIndex) { this.transIndex = transIndex; }
 
-    /* GETTERS & SETTERS for foodIndex */
+    /* GETTERS & SETTERS for foodIndex
     public int getFoodIndex() { return foodIndex; }
 
     public void setFoodIndex(int foodIndex) { this.foodIndex = foodIndex; }
 
-    /* GETTERS & SETTERS for houseIndex */
+    /* GETTERS & SETTERS for houseIndex
     public int getHouseIndex() { return houseIndex; }
 
     public void setHouseIndex(int houseIndex) { this.houseIndex = houseIndex; }
 
-    /* GETTERS & SETTERS for consIndex */
+    /* GETTERS & SETTERS for consIndex
     public int getConsIndex() { return consIndex; }
 
     public void setConsIndex(int consIndex) { this.consIndex = consIndex; }
 
-    /* GETTERS & SETTERS for worstCase */
+    /* GETTERS & SETTERS for worstCase
     public int getWorstCase() { return worstCase; }
 
     public void setWorstCase(int worstCase) { this.worstCase = worstCase; }
 
-    /* GETTERS & SETTERS for consIndex */
+    /* GETTERS & SETTERS for consIndex
     public int getCurrCase() { return currCase; }
 
     public void setCurrCase(int currCase) { this.currCase = currCase; }

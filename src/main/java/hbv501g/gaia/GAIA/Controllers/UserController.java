@@ -137,7 +137,7 @@ public class UserController {
     * Search for other users.
      */
     @RequestMapping("/users")
-    public List<User> userGET() {
+    public List<User> userPage() {
         return userService.findAll();
     }
 

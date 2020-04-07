@@ -5,7 +5,7 @@ import hbv501g.gaia.GAIA.Entities.User;
 import hbv501g.gaia.GAIA.Security.JwtTokenUtil;
 import hbv501g.gaia.GAIA.Security.Model.JwtRequest;
 import hbv501g.gaia.GAIA.Security.Model.JwtResponse;
-import hbv501g.gaia.GAIA.Services.Implementations.JwtUserDetailService;
+import hbv501g.gaia.GAIA.Services.Implementations.JwtUserDetailsService;
 import hbv501g.gaia.GAIA.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,25 +28,26 @@ public class AuthenticationController {
     private AuthenticationManager authenticationManager;
     private UserService userService;
 
-    private JwtUserDetailService jwtUserDetailService;
+    private JwtUserDetailsService jwtUserDetailsService;
     private JwtTokenUtil jwtTokenUtil;
 
     @Autowired
-    public AuthenticationController(AuthenticationManager authenticationManager, UserService userService, JwtUserDetailService jwtUserDetailService, JwtTokenUtil jwtTokenUtil) {
+    public AuthenticationController(AuthenticationManager authenticationManager, UserService userService, JwtUserDetailsService jwtUserDetailsService, JwtTokenUtil jwtTokenUtil) {
         this.authenticationManager = authenticationManager;
         this.userService = userService;
         this.jwtTokenUtil = jwtTokenUtil;
-        this.jwtUserDetailService = jwtUserDetailService;
+        this.jwtUserDetailsService = jwtUserDetailsService;
     }
 
     /**
+     * This is for user login.
      * Authenticate using a simple Username/Password entity
      */
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
         authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
 
-        final UserDetails userDetails = jwtUserDetailService.loadUserByUsername(authenticationRequest.getUsername());
+        final UserDetails userDetails = jwtUserDetailsService.loadUserByUsername(authenticationRequest.getUsername());
 
         final String token = jwtTokenUtil.generateToken(userDetails);
 
@@ -54,6 +55,7 @@ public class AuthenticationController {
     }
 
     /**
+     * This is for user Registration
      * Register using a normal User entity
      */
     @RequestMapping(value = "/register", method = RequestMethod.POST)

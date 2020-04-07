@@ -69,11 +69,11 @@ public class UserServiceImplementation implements UserService {
     /*
      * Function that finds user by his
      * email
-     */
+
     @Override
     public User findByEmail(String email) {
         return repository.findByEmail(email);
-    }
+    } */
 
     /*
      * Function that log in user by his
