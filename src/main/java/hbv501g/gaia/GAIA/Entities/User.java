@@ -126,6 +126,10 @@ public class User {
         this.password = password;
     }
 
+    public User() {
+
+    }
+
     /* GETTERS & SETTERS for userInfo
     public String getUserInfo() {
         return userInfo;
