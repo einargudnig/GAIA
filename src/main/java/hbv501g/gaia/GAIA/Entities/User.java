@@ -1,17 +1,20 @@
 package hbv501g.gaia.GAIA.Entities;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class User implements Authentication {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id")
@@ -26,7 +29,7 @@ public class User {
     // @Size(min=4, max=20)
     public String password;
 
-    /*
+
     @Column(name="email")
     @Email
     public String email;
@@ -59,7 +62,7 @@ public class User {
     public int currCase;
 
 
-    /* USER
+    /* USER */
     public User(String UName, String email, String password, String userInfo, double originalIndex, double currIndex,
                 int transIndex, int foodIndex, int houseIndex, int consIndex, int worstCase, int currCase) {
         this.UName = UName;
@@ -74,7 +77,7 @@ public class User {
         this.consIndex = consIndex;
         this.worstCase = worstCase;
         this.currCase = currCase;
-    } */
+    }
 
 
     public long getId() {
@@ -90,6 +93,11 @@ public class User {
         return UName;
     }
 
+    @Override
+    public String getName() {
+        return null;
+    }
+
     /* GETTERS & SETTERS for name */
     public String getUName() {
         return UName;
@@ -100,7 +108,7 @@ public class User {
     }
 
 
-    /* GETTERS & SETTERS for email
+    /* GETTERS & SETTERS for email */
     public String getEmail() {
         return email;
     }
@@ -130,7 +138,37 @@ public class User {
 
     }
 
-    /* GETTERS & SETTERS for userInfo
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
+    }
+
+    @Override
+    public Object getCredentials() {
+        return null;
+    }
+
+    @Override
+    public Object getDetails() {
+        return null;
+    }
+
+    @Override
+    public Object getPrincipal() {
+        return null;
+    }
+
+    @Override
+    public boolean isAuthenticated() {
+        return false;
+    }
+
+    @Override
+    public void setAuthenticated(boolean b) throws IllegalArgumentException {
+
+    }
+
+    /* GETTERS & SETTERS for userInfo */
     public String getUserInfo() {
         return userInfo;
     }
@@ -140,14 +178,14 @@ public class User {
     }
 
 
-    /* GETTERS & SETTERS for originalIndex
+    /* GETTERS & SETTERS for originalIndex */
     public double getOriginalIndex() { return originalIndex; }
 
     public void setOriginalIndex(double originalIndex) {
         this.originalIndex = originalIndex;
     }
 
-    /* GETTERS & SETTERS for currIndex
+    /* GETTERS & SETTERS for currIndex */
     public double getCurrIndex() {
         return currIndex;
     }
@@ -156,32 +194,32 @@ public class User {
         this.currIndex = currIndex;
     }
 
-    /* GETTERS & SETTERS for transIndex
+    /* GETTERS & SETTERS for transIndex */
     public int getTransIndex() { return transIndex; }
 
     public void setTransIndex(int transIndex) { this.transIndex = transIndex; }
 
-    /* GETTERS & SETTERS for foodIndex
+    /* GETTERS & SETTERS for foodIndex */
     public int getFoodIndex() { return foodIndex; }
 
     public void setFoodIndex(int foodIndex) { this.foodIndex = foodIndex; }
 
-    /* GETTERS & SETTERS for houseIndex
+    /* GETTERS & SETTERS for houseIndex */
     public int getHouseIndex() { return houseIndex; }
 
     public void setHouseIndex(int houseIndex) { this.houseIndex = houseIndex; }
 
-    /* GETTERS & SETTERS for consIndex
+    /* GETTERS & SETTERS for consIndex */
     public int getConsIndex() { return consIndex; }
 
     public void setConsIndex(int consIndex) { this.consIndex = consIndex; }
 
-    /* GETTERS & SETTERS for worstCase
+    /* GETTERS & SETTERS for worstCase */
     public int getWorstCase() { return worstCase; }
 
     public void setWorstCase(int worstCase) { this.worstCase = worstCase; }
 
-    /* GETTERS & SETTERS for consIndex
+    /* GETTERS & SETTERS for consIndex */
     public int getCurrCase() { return currCase; }
 
     public void setCurrCase(int currCase) { this.currCase = currCase; }

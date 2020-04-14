@@ -45,10 +45,10 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         String jwtToken = null;
 
         System.out.println(requestTokenHeader + " = REQUEST TOKEN HEADER");
-        Enumeration<String> headerNames = request.getHeaderNames();
+        /*Enumeration<String> headerNames = request.getHeaderNames();
         while (headerNames.hasMoreElements()) {
             System.out.println("Header  " + headerNames.nextElement());
-        }
+        } */
 
 
         if (requestTokenHeader != null && requestTokenHeader.startsWith("Bearer ")) {

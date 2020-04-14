@@ -18,7 +18,6 @@ import java.util.List;
 
 
 @RestController
-//@RequestMapping("/api")
 public class HomeController {
 
     private ChallengeService challengeService;
@@ -42,15 +41,6 @@ public class HomeController {
     //@RequestMapping("skilmalar")
     //public String Skilmalar() { return "Skilmalar"; }
 
-
-    /* ******************************************************** */
-    /* To see challenges in the database */
-    /* Virkar ad skoda /challenges
-    @RequestMapping(value = "/challenges", method = RequestMethod.GET)
-    public String challengesGET(Model model) {
-        model.addAttribute("challenges", challengeService.findAll());
-        return "challenges";
-    } */
 
     /* ******************************************************** */
     /* To see challenges user has accepted

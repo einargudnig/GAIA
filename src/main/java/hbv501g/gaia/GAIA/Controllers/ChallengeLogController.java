@@ -7,14 +7,12 @@ import hbv501g.gaia.GAIA.Services.ChallengeLogService;
 import hbv501g.gaia.GAIA.Services.ChallengeService;
 import hbv501g.gaia.GAIA.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.servlet.http.HttpSession;
 
 @RestController
 @RequestMapping("/api")
@@ -31,22 +29,27 @@ public class ChallengeLogController {
         this.challengeLogService = challengeLogService;
     }
 
-    /*
-    @RequestMapping(value = "/addChallenge/{id}", method = {RequestMethod.GET, RequestMethod.POST})
-    public String addChallengeToUser(@PathVariable("id") long id, Model model, HttpSession httpSession){
+
+    /** Function that add challenges to the user
+     * has id as parameter. Id for that unique challenge.
+     * @return**/
+    @RequestMapping(value = "/addChallenge/{id}", method = {RequestMethod.POST})
+    public ChallengeLog addChallengeToUser(@PathVariable("id") long id, Authentication authentication){
         Challenge challenge = challengeService.findById(id).orElseThrow(()-> new IllegalArgumentException("Invalid challenge ID"));
-        User sessionUser = (User) httpSession.getAttribute("LoggedInUser");
+        Authentication username = (User) SecurityContextHolder.getContext().getAuthentication();
+        String loggedInUser = username.getName();
+        // User jwtUser = userService.findByUName(authentication.getName());
         System.out.println("--------");
         System.out.println("Hér er user og challenge title sem er verið að skrá");
-        System.out.println(sessionUser);
+        System.out.println(loggedInUser);
         System.out.println(challenge.getTitle());
         System.out.println("--------");
         long challengeId = challenge.getId();
-        User myUser = userService.findByUserName(sessionUser.userName);
-        long sessionUserId = myUser.getId();
-        model.addAttribute("tengi", challengeLogService.addChallengeToUser(sessionUserId, challengeId));
-        return "redirect:/challenges";
-    } */
+        User myUser = userService.findByUName(loggedInUser);
+        long loggedinUserId = myUser.getId();
+        return challengeLogService.addChallengeToUser(loggedinUserId, challengeId);
+
+    }
 
 
 }
