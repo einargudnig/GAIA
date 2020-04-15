@@ -13,5 +13,4 @@ public interface UserService {
     List<User> findAll();
     User findByUName(String userName);
     //User findByEmail(String email);
-    User login(User user);
 }

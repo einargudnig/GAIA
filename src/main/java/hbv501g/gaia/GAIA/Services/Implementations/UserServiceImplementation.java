@@ -27,7 +27,7 @@ public class UserServiceImplementation implements UserService {
     @Override
     public User save(User user) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        return repository.save(new User(user.getUName(), encoder.encode(user.getPassword())));
+        return repository.save(new User(user.getUName(), user.getEmail(), encoder.encode(user.getPassword())));
     }
 
     /*
@@ -75,21 +75,6 @@ public class UserServiceImplementation implements UserService {
         return repository.findByEmail(email);
     } */
 
-    /*
-     * Function that log in user by his
-     */
-    @Override
-    public User login(User user) {
-        User exists = findByUName(user.UName);
 
-        System.out.println("HERNA er eg ad logga inn" + exists);
-
-        if (exists != null) {
-            if(exists.password.equals(user.password)) {
-                return user;
-            }
-        }
-        return null;
-    }
 
 }

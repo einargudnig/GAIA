@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api")
 public class ChallengeLogController {
 
     private UserService userService;
@@ -32,7 +31,7 @@ public class ChallengeLogController {
 
     /** Function that add challenges to the user
      * has id as parameter. Id for that unique challenge.
-     * @return**/
+     * @return*
     @RequestMapping(value = "/addChallenge/{id}", method = {RequestMethod.POST})
     public ChallengeLog addChallengeToUser(@PathVariable("id") long id, Authentication authentication){
         Challenge challenge = challengeService.findById(id).orElseThrow(()-> new IllegalArgumentException("Invalid challenge ID"));
@@ -49,7 +48,7 @@ public class ChallengeLogController {
         long loggedinUserId = myUser.getId();
         return challengeLogService.addChallengeToUser(loggedinUserId, challengeId);
 
-    }
+    } */
 
 
 }

@@ -66,10 +66,11 @@ public class AuthenticationController {
     public String loggedIntGET(@RequestBody JwtRequest authenticationRequest) {
 
         // Think this one works better !
-        // I think this ine is extracting the name from the JWT token and returning that username.
+        // I think this line is extracting the name from the JWT token and returning that username.
         // therefore we need to make sure to pass the JWT token with every request.
         Authentication loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication();
         String username = loggedInUser.getName();
+        System.out.println(username);
 
         return username;
     }
@@ -85,9 +86,10 @@ public class AuthenticationController {
         return new ResponseEntity<>(userService.save(user), HttpStatus.CREATED);
     }
 
-    private void authenticate(String username, String password) throws Exception {
+    private void authenticate(String UName, String password) throws Exception {
         try {
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(UName, password));
+
         } catch (DisabledException e) {
             throw new Exception("USER_DISABLED", e);
         } catch (BadCredentialsException e) {

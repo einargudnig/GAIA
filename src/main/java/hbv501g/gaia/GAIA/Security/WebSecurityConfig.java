@@ -48,9 +48,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return super.authenticationManagerBean();
     }
 
+
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/authenticate", "/register");
+        web.ignoring().antMatchers("/authentication", "/register");
     }
 
     @Override
@@ -69,4 +70,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         // Add a filter to validate the tokens with every request
         httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
     }
+
 }

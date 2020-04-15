@@ -32,61 +32,32 @@ public class User implements Authentication {
 
     @Column(name="email")
     @Email
+    @JsonProperty(value = "email")
     public String email;
 
-    @Column(name="userinfo")
-    public String userInfo;
-
-    @Column(name="originalindex")
-    public double originalIndex;
-
-    @Column(name="currindex")
-    public double currIndex;
-
-    @Column(name="transIndex")
-    public int transIndex;
-
-    @Column(name="foodIndex")
-    public int foodIndex;
-
-    @Column(name="houseIndex")
-    public int houseIndex;
-
-    @Column(name="consIndex")
-    public int consIndex;
-
-    @Column(name="worstCase")
-    public int worstCase;
-
-    @Column(name="currCase")
-    public int currCase;
 
 
     /* USER */
-    public User(String UName, String email, String password, String userInfo, double originalIndex, double currIndex,
-                int transIndex, int foodIndex, int houseIndex, int consIndex, int worstCase, int currCase) {
+    public User(String UName, String email, String password) {
         this.UName = UName;
         this.email = email;
         this.password = password;
-        this.userInfo = userInfo;
-        this.originalIndex = originalIndex;
-        this.currIndex = currIndex;
-        this.transIndex = transIndex;
-        this.foodIndex = foodIndex;
-        this.houseIndex = houseIndex;
-        this.consIndex = consIndex;
-        this.worstCase = worstCase;
-        this.currCase = currCase;
+
+    }
+
+    public User() {
+
     }
 
 
+    /*
     public long getId() {
         return id;
     }
 
     public void setId(long id) {
         this.id = id;
-    }
+    } */
 
     @Override
     public String toString() {
@@ -97,6 +68,7 @@ public class User implements Authentication {
     public String getName() {
         return null;
     }
+
 
     /* GETTERS & SETTERS for name */
     public String getUName() {
@@ -129,14 +101,10 @@ public class User implements Authentication {
 
 
 
-    public User(String UName, String password) {
-        this.UName = UName;
-        this.password = password;
-    }
 
-    public User() {
 
-    }
+    /* Extra stuff from Spring Security */
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -168,64 +136,5 @@ public class User implements Authentication {
 
     }
 
-    /* GETTERS & SETTERS for userInfo */
-    public String getUserInfo() {
-        return userInfo;
-    }
-
-    public void setUserInfo(String userInfo) {
-        this.userInfo= userInfo;
-    }
-
-
-    /* GETTERS & SETTERS for originalIndex */
-    public double getOriginalIndex() { return originalIndex; }
-
-    public void setOriginalIndex(double originalIndex) {
-        this.originalIndex = originalIndex;
-    }
-
-    /* GETTERS & SETTERS for currIndex */
-    public double getCurrIndex() {
-        return currIndex;
-    }
-
-    public void setCurrIndex(double currIndex) {
-        this.currIndex = currIndex;
-    }
-
-    /* GETTERS & SETTERS for transIndex */
-    public int getTransIndex() { return transIndex; }
-
-    public void setTransIndex(int transIndex) { this.transIndex = transIndex; }
-
-    /* GETTERS & SETTERS for foodIndex */
-    public int getFoodIndex() { return foodIndex; }
-
-    public void setFoodIndex(int foodIndex) { this.foodIndex = foodIndex; }
-
-    /* GETTERS & SETTERS for houseIndex */
-    public int getHouseIndex() { return houseIndex; }
-
-    public void setHouseIndex(int houseIndex) { this.houseIndex = houseIndex; }
-
-    /* GETTERS & SETTERS for consIndex */
-    public int getConsIndex() { return consIndex; }
-
-    public void setConsIndex(int consIndex) { this.consIndex = consIndex; }
-
-    /* GETTERS & SETTERS for worstCase */
-    public int getWorstCase() { return worstCase; }
-
-    public void setWorstCase(int worstCase) { this.worstCase = worstCase; }
-
-    /* GETTERS & SETTERS for consIndex */
-    public int getCurrCase() { return currCase; }
-
-    public void setCurrCase(int currCase) { this.currCase = currCase; }
-
-    /*
-    * Test for signUp
-     */
 
 }
