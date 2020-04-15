@@ -41,7 +41,7 @@ public class User implements Authentication {
     public User(String UName, String email, String password) {
         this.UName = UName;
         this.email = email;
-        this.password = password;
+
 
     }
 
