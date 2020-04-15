@@ -1,6 +1,7 @@
 # GAIA
 HBV501G
 
+
 To run this project:
 
 You need to have postgres installed and working on your machine.
