@@ -29,19 +29,26 @@ public class User implements Authentication {
     // @Size(min=4, max=20)
     public String password;
 
-
     @Column(name="email")
     @Email
     @JsonProperty(value = "email")
     public String email;
 
+    @Column(name = "currindex")
+    public int currIndex;
+
+    @Column(name = "userinfo")
+    public String userInfo;
+
 
 
     /* USER */
-    public User(String UName, String email, String password) {
+    public User(String UName, String email, String password, int currIndex, String userInfo) {
         this.UName = UName;
         this.email = email;
         this.password = password;
+        this.currIndex = currIndex;
+        this.userInfo = userInfo;
 
     }
 
@@ -99,9 +106,21 @@ public class User implements Authentication {
         this.password = password;
     }
 
+    public int getCurrIndex() {
+        return currIndex;
+    }
 
+    public void setCurrIndex(int currIndex) {
+        this.currIndex = currIndex;
+    }
 
+    public String getUserInfo() {
+        return userInfo;
+    }
 
+    public void setUserInfo(String userInfo) {
+        this.userInfo = userInfo;
+    }
 
     /* Extra stuff from Spring Security */
 

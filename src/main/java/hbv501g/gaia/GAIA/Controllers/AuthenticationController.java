@@ -57,29 +57,27 @@ public class AuthenticationController {
 
     }
 
-    /** Function that returns the logged in user
-     * Uses Authentication and the JWT token to find the logged in user
-     * Authentication loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication();
-     *         String username = loggedInUser.getName();
-     *
-     * @return*/
-    @RequestMapping(value = "/loggedin", method = RequestMethod.GET)
-    public User loggedIntGET(Authentication authentication) {
-        return userService.findByUName(authentication.getName());
-    }
 
     /**
      * This is for user Registration
      * Register using a normal User entity
      */
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public ResponseEntity<?> register(@Valid @RequestBody User user) {
+    public ResponseEntity<?> register(@Valid @RequestBody User user, JwtRequest authenticationRequest) {
         System.out.println("ER EG HER??");
-        if(userService.findByUName(user.getUName()) != null)
+        if(userService.findByUName(user.getUName()) != null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Username already taken");
-            System.out.println("EN HER????");
-        return new ResponseEntity<>(userService.save(user), HttpStatus.CREATED);
+        } else {
+            userService.save(user);
+
+            final UserDetails userDetails = jwtUserDetailsService.loadUserByUsername(authenticationRequest.getUsername());
+
+            final String token = jwtTokenUtil.generateToken(userDetails);
+
+            return ResponseEntity.ok(new JwtResponse(token));
+        }
     }
+
 
     private void authenticate(String UName, String password) throws Exception {
         try {
@@ -91,5 +89,19 @@ public class AuthenticationController {
             throw new Exception("INVALID_CREDENTIALS", e);
         }
     }
+
+    /** Function that returns the logged in user
+     * Uses Authentication and the JWT token to find the logged in user
+     * Authentication loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication();
+     *         String username = loggedInUser.getName();
+     *
+     * @return*/
+    @RequestMapping(value = "/loggedin", method = RequestMethod.GET)
+    public User loggedIntGET(Authentication authentication) {
+        return userService.findByUName(authentication.getName());
+    }
+
+
+
 }
 
