@@ -51,14 +51,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/authentication", "/register");
+        web.ignoring().antMatchers("/authentication**", "/register**");
     }
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.csrf().disable()
+                .anonymous().and()
                 // Allow POST request to to register and authenticate
-                .authorizeRequests().antMatchers(HttpMethod.POST,"/authenticate", "/register").permitAll().and()
+                .authorizeRequests().antMatchers("/authenticate*", "/register*").permitAll().and()
                 // Allow GET requests to certain endpoints
                 .authorizeRequests().antMatchers(HttpMethod.GET, "/users", "/challenges").permitAll()
                 // Require authentication for everything else

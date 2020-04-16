@@ -15,7 +15,6 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -60,19 +59,13 @@ public class AuthenticationController {
 
     /** Function that returns the logged in user
      * Uses Authentication and the JWT token to find the logged in user
+     * Authentication loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication();
+     *         String username = loggedInUser.getName();
      *
      * @return*/
     @RequestMapping(value = "/loggedin", method = RequestMethod.GET)
-    public String loggedIntGET(@RequestBody JwtRequest authenticationRequest) {
-
-        // Think this one works better !
-        // I think this line is extracting the name from the JWT token and returning that username.
-        // therefore we need to make sure to pass the JWT token with every request.
-        Authentication loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication();
-        String username = loggedInUser.getName();
-        System.out.println(username);
-
-        return username;
+    public User loggedIntGET(Authentication authentication) {
+        return userService.findByUName(authentication.getName());
     }
 
     /**
@@ -81,8 +74,10 @@ public class AuthenticationController {
      */
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public ResponseEntity<?> register(@Valid @RequestBody User user) {
+        System.out.println("ER EG HER??");
         if(userService.findByUName(user.getUName()) != null)
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Username already taken");
+            System.out.println("EN HER????");
         return new ResponseEntity<>(userService.save(user), HttpStatus.CREATED);
     }
 

@@ -42,7 +42,7 @@ public class UserController {
         return "SignUp";
     }
 
-    
+
     /* ******************************************************** */
     /* To Log in user
     *  First part of this login functionality is just to
