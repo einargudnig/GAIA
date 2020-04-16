@@ -63,20 +63,14 @@ public class AuthenticationController {
      * Register using a normal User entity
      */
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public ResponseEntity<?> register(@Valid @RequestBody User user, JwtRequest authenticationRequest) {
+    public ResponseEntity<?> register(@Valid @RequestBody User user) {
         System.out.println("ER EG HER??");
-        if(userService.findByUName(user.getUName()) != null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Username already taken");
-        } else {
-            userService.save(user);
-
-            final UserDetails userDetails = jwtUserDetailsService.loadUserByUsername(authenticationRequest.getUsername());
-
-            final String token = jwtTokenUtil.generateToken(userDetails);
-
-            return ResponseEntity.ok(new JwtResponse(token));
-        }
+        //if(userService.findByUName(user.getUName()) != null)
+          //  throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Username already taken");
+        System.out.println(user);
+        return new ResponseEntity<>(userService.save(user), HttpStatus.CREATED);
     }
+
 
 
     private void authenticate(String UName, String password) throws Exception {
