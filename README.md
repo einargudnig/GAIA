@@ -2,6 +2,13 @@
 HBV501G
 
 
+## Update
+We did changes to this project. Now it works as a RESTful API. 
+https://github.com/einargudnig/GAIA-2.0 This repo has the android app that connects to this API.
+More info can be found there.
+If you want to test the API we recommend to use Postman.
+
+
 To run this project:
 
 You need to have postgres installed and working on your machine.
@@ -20,8 +27,9 @@ in this file, this ensures that you have your database set up in the same way we
 
 Next is to run the data-postgres.sql file, that inserts data to the already built database. This data contains some challenges and 4 users.
 Here are the users and their password for signing in:  
-Username -- Password  
-Einar    -- ranie  
-Viktor   -- rotkiv  
-Ómar     -- ramó  
-Páll     -- lláp  
+| Username    | Password    |
+| ----------- | ----------- |
+| Einar       | ranie       |
+| Páll        | llap        |
+| Ómar        | ramo        |
+| Viktor      | rotkiv      |
